@@ -26,6 +26,55 @@ class Container extends HTMLDivElement {
 	}
 }
 
+class BreakpointUtility {
+    constructor(attributes) {
+        this._breakpoints = [undefined, 'sm', 'md', 'lg', 'xl'];
+        this._attributes = attributes;
+    }
+
+    addAttribute(element, attr, bp, value) {
+		//check for valid attribute
+		if (! attr in this._attributes) throw "Invalid attribute";
+
+		//Check for valid breakpoint
+		if (!this._breakpoints.includes(bp)) throw "Invalid breakpoint";
+
+		//check for valid value
+		let values = this._attributes[attr]['values'];
+		if (!values.includes(value)) throw "Invalid value";
+
+		//build className
+		let className = attr;
+		if (bp !== undefined) className += '-' + bp;
+		if (value !== undefined) className += '-' + value;
+
+		element.classList.add(className);
+        this._attributes[attr]['classes'][bp] = className;
+	}
+
+	removeAttribute(element, attr, bp) {
+		//Check for valid attribute
+		if (! attr in this._attributes) throw "Invalid attribute";
+
+		//Check for valid breakpoint
+		if (!this._breakpoints.includes(bp)) throw "Invalid breakpoint";
+
+		//get current className
+		let className = this._attributes[attr]['classes'][bp];
+
+		element.classList.remove(className);
+        this._attributes[attr]['classes'][bp] = null;
+	}
+
+	updateAttribute(element, attr, bp, value) {
+		this.removeAttribute(element, attr, bp);
+
+		if (value !== null) {
+			this.addAttribute(element, attr, bp, value);
+		}
+	}
+}
+
 class Row extends HTMLDivElement {
 	constructor() {
 		super();
@@ -173,8 +222,6 @@ class Col extends HTMLDivElement {
 	constructor() {
 		super();
 
-		this._breakpoints = [undefined, 'sm', 'md', 'lg', 'xl']
-
 		this._attributes = {
 			'col': {
 				'classes': {
@@ -206,57 +253,17 @@ class Col extends HTMLDivElement {
 				},
 				values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 			}
-		}
+        }
+        
+        this.bpUtility = new BreakpointUtility(this._attributes);
 
 		this.col();
-	}
-
-	_addAttribute(attr, bp, value) {
-		//check for valid attribute
-		if (! attr in this._attributes) throw "Invalid attribute";
-
-		//Check for valid breakpoint
-		if (!this._breakpoints.includes(bp)) throw "Invalid breakpoint";
-
-		//check for valid value
-		let values = this._attributes[attr]['values'];
-		if (!values.includes(value)) throw "Invalid value";
-
-		//build className
-		let className = attr;
-		if (bp !== undefined) className += '-' + bp;
-		if (value !== undefined) className += '-' + value;
-
-		this.classList.add(className);
-		this._attributes[attr]['classes'][bp] = className;
-	}
-
-	_removeAttribute(attr, bp) {
-		//Check for valid attribute
-		if (! attr in this._attributes) throw "Invalid attribute";
-
-		//Check for valid breakpoint
-		if (!this._breakpoints.includes(bp)) throw "Invalid breakpoint";
-
-		//get current className
-		let className = this._attributes[attr]['classes'][bp];
-
-		this.classList.remove(className);
-		this._attributes[attr]['classes'][bp] = null;
-	}
-
-	_updateAttribute(attr, bp, value) {
-		this._removeAttribute(attr, bp);
-
-		if (value !== null) {
-			this._addAttribute(attr, bp, value);
-		}
 	}
 
 	//Column Classes
 	col(value, bp) {
 		const attr = 'col';
-		this._updateAttribute(attr, bp, value);
+        this.bpUtility.updateAttribute(this, attr, bp, value);
 		return this;
 	}
 
@@ -284,7 +291,7 @@ class Col extends HTMLDivElement {
 
 	order(value, bp) {
 		const attr = 'order';
-		this._updateAttribute(attr, bp, value);
+        this.bpUtility.updateAttribute(this, attr, bp, value);
 		return this;
 	}
 
@@ -312,7 +319,7 @@ class Col extends HTMLDivElement {
 
 	offset(value, bp) {
 		const attr = 'offset';
-		this._updateAttribute(attr, bp, value);
+        this.bpUtility.updateAttribute(this, attr, bp, value);
 		return this;
 	}
 
