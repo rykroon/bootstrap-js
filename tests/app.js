@@ -75,7 +75,7 @@ class Col extends HTMLDivElement {
 			}
 		}
 
-		this.extraSmall();
+		this.col();
 	}
 
 	_addAttribute(attr, bp, value) {
@@ -125,11 +125,6 @@ class Col extends HTMLDivElement {
 		const attr = 'col';
 		this._updateAttribute(attr, bp, value);
 		return this;
-	}
-
-	extraSmall(value) {
-		const bp = undefined;
-		return this.col(value, bp);
 	}
 
 	small(value) {
@@ -182,34 +177,30 @@ class Col extends HTMLDivElement {
 
 	// Offset
 
-	offset(value) {
+	offset(value, bp) {
 		const attr = 'offset';
-		const bp = undefined;
-		return this._updateAttribute(attr, bp, value);
+		this._updateAttribute(attr, bp, value);
+		return this;
 	}
 
 	offsetSmall(value) {
-		const attr = 'offset';
 		const bp = 'sm';
-		return this._updateAttribute(attr, bp, value);
+		return this.offset(value, bp);
 	}
 
 	offsetMedium(value) {
-		const attr = 'offset';
 		const bp = 'md';
-		return this._updateAttribute(attr, bp, value);
+		return this.offset(value, bp);
 	}
 
 	offsetLarge(value) {
-		const attr = 'offset';
 		const bp = 'lg';
-		return this._updateAttribute(attr, bp, value);
+		return this.offset(value, bp);
 	}
 
 	offsetExtraLarge(value) {
-		const attr = 'offset';
 		const bp = 'xl';
-		return this._updateAttribute(attr, bp, value);
+		return this.offset(value, bp);
 	}
 }
 
