@@ -33,6 +33,142 @@ class Row extends HTMLDivElement {
 	constructor() {
 		super();
 		this.className='row';
+
+		this._breakpoints = [undefined, 'sm', 'md', 'lg', 'xl']
+		this._attributes = {
+			'justify-content': {
+				'classes': {
+					undefined: null,
+					'sm': null,
+					'md': null,
+					'lg': null,
+					'xl': null
+				},
+				values: ['start', 'center', 'end', 'around', 'between']		
+			},
+			'align-items': {
+				classes: {
+					undefined: null,
+					'sm': null,
+					'md': null,
+					'lg': null,
+					'xl': null
+				},
+				values: ['start', 'end', 'center', 'baseline', 'stretch']
+			}		
+		};
+	}
+
+	//No Gutters
+
+	get noGutters() {
+		return this.classList.contains('no-gutters');
+	}
+
+	set noGutters(value) {
+		if (value) {
+			this.classList.add('no-gutters');
+		} else {
+			this.classList.remove('no-gutters');
+		}
+	}
+
+	_addAttribute(attr, bp, value) {
+		//check for valid attribute
+		if (! attr in this._attributes) throw "Invalid attribute";
+
+		//Check for valid breakpoint
+		if (!this._breakpoints.includes(bp)) throw "Invalid breakpoint";
+
+		//check for valid value
+		let values = this._attributes[attr]['values'];
+		if (!values.includes(value)) throw "Invalid value";
+
+		//build className
+		let className = attr;
+		if (bp !== undefined) className += '-' + bp;
+		if (value !== undefined) className += '-' + value;
+
+		this.classList.add(className);
+		this._attributes[attr]['classes'][bp] = className;
+	}
+
+	_removeAttribute(attr, bp) {
+		//Check for valid attribute
+		if (! attr in this._attributes) throw "Invalid attribute";
+
+		//Check for valid breakpoint
+		if (!this._breakpoints.includes(bp)) throw "Invalid breakpoint";
+
+		//get current className
+		let className = this._attributes[attr]['classes'][bp];
+
+		this.classList.remove(className);
+		this._attributes[attr]['classes'][bp] = null;
+	}
+
+	_updateAttribute(attr, bp, value) {
+		this._removeAttribute(attr, bp);
+
+		if (value !== null) {
+			this._addAttribute(attr, bp, value);
+		}
+	}
+
+	//Justify Content
+
+	justify(value, bp) {
+		const attr = 'justify-content';
+		this._updateAttribute(attr, bp, value);
+		return this;
+	}
+
+	justifySmall(value) {
+		const bp = 'sm';
+		return this.justify(value, bp);
+	}
+
+	justifyMedium(value) {
+		const bp = 'md';
+		return this.justify(value, bp);
+	}
+
+	justifyLarge(value) {
+		const bp = 'lg';
+		return this.justify(value, bp);
+	}
+
+	justifyExtraLarge(value) {
+		const bp = 'xl';
+		return this.justify(value, bp);
+	}
+
+	//Align Items
+
+	align(value, bp) {
+		const attr = 'align-items';
+		this._updateAttribute(attr, bp, value);
+		return this;
+	}
+
+	alignSmall(value) {
+		const bp = 'sm';
+		return this.align(value, bp);
+	}
+
+	alignMedium(value) {
+		const bp = 'md';
+		return this.align(value, bp);
+	}
+
+	alignLarge(value) {
+		const bp = 'lg';
+		return this.align(value, bp);
+	}
+
+	alignExtraLarge(value) {
+		const bp = 'xl';
+		return this.align(value, bp);
 	}
 }
 
@@ -51,7 +187,7 @@ class Col extends HTMLDivElement {
 					'lg': null,
 					'xl': null
 				},
-				values: [undefined, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+				values: [undefined, 'auto', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 			},
 			'order': {
 				'classes': {
