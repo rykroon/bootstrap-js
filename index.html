@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+		<link 
+			rel="stylesheet" 
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+			crossorigin="anonymous">
+
+		<script src='src/grid.js'></script>
+	</head>
+	<body>
+
+	</body>
+
+	<script>
+		container = new Container();
+		row = new Row();
+
+		col1 = new Col();
+		col1.classList.add('bg-primary');
+		col1.classList.add('p-5');
+
+		col2 = new Col();
+		col2.classList.add('bg-secondary');
+		col2.classList.add('p-5');
+
+		col3 = new Col();
+		col3.classList.add('bg-success');
+		col3.classList.add('p-5');
+
+		row.appendChild(col1);
+		row.appendChild(col2)
+		row.appendChild(col3)
+		container.appendChild(row)
+		container.appendToBody();
+	</script>
+</html>
+

@@ -1,6 +1,3 @@
-//test
-
-
 class Container extends HTMLDivElement {
 
 	constructor() {
@@ -343,27 +340,3 @@ class Col extends HTMLDivElement {
 window.customElements.define('bs-container', Container, {extends: 'div'});
 window.customElements.define('bs-row', Row, {extends: 'div'});
 window.customElements.define('bs-col', Col, {extends: 'div'});
-
-container = new Container();
-row = new Row();
-
-col1 = new Col();
-col1.classList.add('bg-primary');
-col1.classList.add('p-5');
-
-col2 = new Col();
-col2.classList.add('bg-secondary');
-col2.classList.add('p-5');
-
-col3 = new Col();
-col3.classList.add('bg-success');
-col3.classList.add('p-5');
-
-row.appendChild(col1);
-row.appendChild(col2)
-row.appendChild(col3)
-container.appendChild(row)
-container.appendToBody();
-
-
-
