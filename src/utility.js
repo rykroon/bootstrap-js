@@ -211,5 +211,39 @@ let spacingMixin = {
 
 }
 
+let displayMixin = {
+    get _displayProperties() {
+        return {
+            'd': [
+                'none',
+                'inline',
+                'inline-block',
+                'block',
+                'table',
+                'table-cell',
+                'table-row',
+                'flex',
+                'inline-flex'
+            ]
+        }
+    },
+    _updateDisplayProperty(prop, bp, value) {
+        if (! (prop in this._responsiveProperties)) {
+            this._responsiveProperties[prop] = this._displayProperties[prop];
+        }
+
+        return this._updateResponsiveProperty(prop, bp, value);
+    },
+
+    display(value, bp)          {return this._updateDisplayProperty('d', bp, value);},
+    displaySmall(value)         {return this.display(value, 'sm');},
+    displayMedium(value)        {return this.display(value, 'md');},
+    displayLarge(value)         {return this.display(value, 'lg');},
+    displayExtraLarge(value)    {return this.display(value, 'xl');},
+
+}
+
+
 Object.assign(HTMLElement.prototype, breakpointMixin);
 Object.assign(HTMLElement.prototype, spacingMixin);
+Object.assign(HTMLElement.prototype, displayMixin);
