@@ -22,18 +22,20 @@ let breakpointMixin = {
 
     _searchForResponsiveProperty(prop, bp) {
         let classes = this.className.split(" ");
+        let search = prop;
+        if (bp !== undefined) search += '-' + bp;
 
         for (let idx in classes) {
             let _class = classes[idx];
+            if (search == _class) return _class;
+
             let parts = _class.split('-');
+            let lastElement = parts.slice(-1)[0];
 
-            if (parts[0] != prop) continue;
-
-            if (parts.length == 1 && bp === undefined) return _class;
-            if (parts.length >= 2 && bp == parts[1]) return _class;
-
-            let bpIsValid = this._isValidBreakpoint(parts[1]);
-            if (parts.length == 2 && bp === undefined && !bpIsValid) return _class;
+            if (! this._isValidBreakpoint(lastElement)) {
+                parts.pop();
+                if (search == parts.join('-')) return _class;
+            }
         }
 
         return false;
