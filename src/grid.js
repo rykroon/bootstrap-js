@@ -17,7 +17,6 @@ class Container extends HTMLDivElement {
 		}
 	}
 
-
 	appendToBody() {
 		let body = document.getElementsByTagName('body')[0];
 		if (body) {
@@ -27,52 +26,91 @@ class Container extends HTMLDivElement {
 }
 
 
-class BreakpointUtility {
-    constructor(attributes) {
-        this._breakpoints = [undefined, 'sm', 'md', 'lg', 'xl'];
-        this._attributes = attributes;
-    }
+//Breakpoint Mixin for Responsive Properties
+let breakpointMixin = {
+    get _breakpoints() {
+        return [undefined, 'sm', 'md', 'lg', 'xl'];
+    },
 
-    addAttribute(element, attr, bp, value) {
-		//check for valid attribute
-		if (! attr in this._attributes) throw "Invalid attribute";
+    _isValidResponsiveProperty(prop) {
+        return prop in this._responsiveProperties;
+    },
+
+    _isValidBreakpoint(bp) {
+        return this._breakpoints.includes(bp);
+    },
+
+    _isValidValueForResponsiveProperty(prop, value) {
+        return this._responsiveProperties[prop].includes(value);
+    },
+
+    _searchForResponsiveProperty(prop, bp) {
+        let classes = this.className.split(" ");
+
+        for (let idx in classes) {
+            let _class = classes[idx];
+            let parts = _class.split('-');
+
+            if (parts[0] != prop) continue;
+
+            if (parts.length == 1 && bp === undefined) return _class;
+            if (parts.length == 3 && bp == parts[1]) return _class;
+
+            if (parts.length == 2) {
+                let bpIsValid = this._isValidBreakpoint(parts[1]);
+
+                if ((bp === undefined && !bpIsValid) || 
+                    (bp == parts[1] && bpIsValid)) {
+                        return _class;
+                }
+            }
+        }
+
+        return false;
+    },
+
+    _addResponsiveProperty(prop, bp, value) {
+		//check for valid property
+		if (! this._isValidResponsiveProperty(prop)) throw "Invalid property";
 
 		//Check for valid breakpoint
-		if (!this._breakpoints.includes(bp)) throw "Invalid breakpoint";
+		if (! this._isValidBreakpoint(bp)) throw "Invalid breakpoint";
 
 		//check for valid value
-		let values = this._attributes[attr]['values'];
-		if (!values.includes(value)) throw "Invalid value";
+        if (! this._isValidValueForResponsiveProperty(prop, value)) throw "Invalid Value";
+
+        //remove already existing property
+        this._removeResponsiveProperty(prop, bp);
 
 		//build className
-		let className = attr;
+		let className = prop;
 		if (bp !== undefined) className += '-' + bp;
 		if (value !== undefined) className += '-' + value;
 
-		element.classList.add(className);
-        this._attributes[attr]['classes'][bp] = className;
-	}
+        this.classList.add(className);
+        return className;
+	},
 
-	removeAttribute(element, attr, bp) {
-		//Check for valid attribute
-		if (! attr in this._attributes) throw "Invalid attribute";
+	_removeResponsiveProperty(prop, bp) {
+		//check for valid property
+		if (! this._isValidResponsiveProperty(prop)) throw "Invalid property";
 
 		//Check for valid breakpoint
-		if (!this._breakpoints.includes(bp)) throw "Invalid breakpoint";
+		if (! this._isValidBreakpoint(bp)) throw "Invalid breakpoint";
 
-		//get current className
-		let className = this._attributes[attr]['classes'][bp];
+        //Search for class name that matches property and breakpoint
+        let className = this._searchForResponsiveProperty(prop, bp);
+        this.classList.remove(className);
+        
+        return className;
+	},
 
-		element.classList.remove(className);
-        this._attributes[attr]['classes'][bp] = null;
-	}
-
-	updateAttribute(element, attr, bp, value) {
-		this.removeAttribute(element, attr, bp);
-
-		if (value !== null) {
-			this.addAttribute(element, attr, bp, value);
-		}
+	_updateResponsiveProperty(prop, bp, value) {
+		if (value === null) {
+			this._removeResponsiveProperty(prop, bp);
+		} else {
+            this._addResponsiveProperty(prop, bp, value);
+        }
 	}
 }
 
@@ -82,31 +120,10 @@ class Row extends HTMLDivElement {
 		super();
 		this.className='row';
 
-		let attributes = {
-			'justify-content': {
-				'classes': {
-					undefined: null,
-					'sm': null,
-					'md': null,
-					'lg': null,
-					'xl': null
-				},
-				values: ['start', 'center', 'end', 'around', 'between']		
-			},
-			'align-items': {
-				classes: {
-					undefined: null,
-					'sm': null,
-					'md': null,
-					'lg': null,
-					'xl': null
-				},
-				values: ['start', 'end', 'center', 'baseline', 'stretch']
-			}		
+		this._responsiveProperties = {
+			'justify-content': ['start', 'center', 'end', 'around', 'between'],
+			'align-items': ['start', 'end', 'center', 'baseline', 'stretch']	
         };
-        
-        this.bpUtility = new BreakpointUtility(attributes);
-
 	}
 
 	//No Gutters
@@ -123,12 +140,11 @@ class Row extends HTMLDivElement {
 		}
     }
     
-	//Justify Content
 
+	//Justify Content
 	justify(value, bp) {
-		const attr = 'justify-content';
-        //this._updateAttribute(attr, bp, value);
-        this.bpUtility.updateAttribute(this, attr, bp, value);
+		const prop = 'justify-content';
+        this._updateResponsiveProperty(prop, bp, value);
 		return this;
 	}
 
@@ -152,12 +168,11 @@ class Row extends HTMLDivElement {
 		return this.justify(value, bp);
 	}
 
-	//Align Items
 
+	//Align Items
 	align(value, bp) {
-		const attr = 'align-items';
-        //this._updateAttribute(attr, bp, value);
-        this.bpUtility.updateAttribute(this, attr, bp, value);
+		const prop = 'align-items';
+        this._updateResponsiveProperty(prop, bp, value);
 		return this;
 	}
 
@@ -183,52 +198,25 @@ class Row extends HTMLDivElement {
 }
 
 
+
+
 class Col extends HTMLDivElement {
 	constructor() {
 		super();
 
-		let attributes = {
-			'col': {
-				'classes': {
-					undefined: null,
-					'sm': null,
-					'md': null,
-					'lg': null,
-					'xl': null
-				},
-				values: [undefined, 'auto', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-			},
-			'order': {
-				'classes': {
-					undefined: null,
-					'sm': null,
-					'md': null,
-					'lg': null,
-					'xl': null
-				},
-				values: ['first', 'last', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-			},
-			'offset': {
-				'classes': {
-					undefined: null,
-					'sm': null,
-					'md': null,
-					'lg': null,
-					'xl': null
-				},
-				values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-			}
+		this._responsiveProperties = {
+			col: [undefined, 'auto', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			order: ['first', 'last', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			offset: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
         }
-        
-        this.bpUtility = new BreakpointUtility(attributes);
 
 		this.col();
 	}
 
 	//Column Classes
 	col(value, bp) {
-		const attr = 'col';
-        this.bpUtility.updateAttribute(this, attr, bp, value);
+		const prop = 'col';
+        this._updateResponsiveProperty(prop, bp, value);
 		return this;
 	}
 
@@ -253,10 +241,9 @@ class Col extends HTMLDivElement {
 	}
 
 	// Order Classes
-
 	order(value, bp) {
-		const attr = 'order';
-        this.bpUtility.updateAttribute(this, attr, bp, value);
+		const prop = 'order';
+        this._updateResponsiveProperty(prop, bp, value);
 		return this;
 	}
 
@@ -281,10 +268,9 @@ class Col extends HTMLDivElement {
 	}
 
 	// Offset
-
 	offset(value, bp) {
-		const attr = 'offset';
-        this.bpUtility.updateAttribute(this, attr, bp, value);
+		const prop = 'offset';
+        this._updateResponsiveProperty(prop, bp, value);
 		return this;
 	}
 
@@ -308,6 +294,9 @@ class Col extends HTMLDivElement {
 		return this.offset(value, bp);
 	}
 }
+
+Object.assign(Col.prototype, breakpointMixin);
+Object.assign(Row.prototype, breakpointMixin);
 
 window.customElements.define('bs-container', Container, {extends: 'div'});
 window.customElements.define('bs-row', Row, {extends: 'div'});
