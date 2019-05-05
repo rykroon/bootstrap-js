@@ -259,64 +259,20 @@ class Row extends HTMLDivElement {
 		}
     }
     
-
 	//Justify Content
-	justify(value, bp) {
-		const prop = 'justify-content';
-        this._updateResponsiveProperty(prop, bp, value);
-		return this;
-	}
-
-	justifySmall(value) {
-		const bp = 'sm';
-		return this.justify(value, bp);
-	}
-
-	justifyMedium(value) {
-		const bp = 'md';
-		return this.justify(value, bp);
-	}
-
-	justifyLarge(value) {
-		const bp = 'lg';
-		return this.justify(value, bp);
-	}
-
-	justifyExtraLarge(value) {
-		const bp = 'xl';
-		return this.justify(value, bp);
-	}
-
+	justify(value, bp)          {return this._updateResponsiveProperty('justify-content', bp, value);}
+	justifySmall(value)         {return this.justify(value, 'sm');}
+	justifyMedium(value)        {return this.justify(value, 'md');}
+	justifyLarge(value)         {return this.justify(value, 'lg');}
+	justifyExtraLarge(value)    {return this.justify(value, 'xl');}
 
 	//Align Items
-	align(value, bp) {
-		const prop = 'align-items';
-        this._updateResponsiveProperty(prop, bp, value);
-		return this;
-	}
-
-	alignSmall(value) {
-		const bp = 'sm';
-		return this.align(value, bp);
-	}
-
-	alignMedium(value) {
-		const bp = 'md';
-		return this.align(value, bp);
-	}
-
-	alignLarge(value) {
-		const bp = 'lg';
-		return this.align(value, bp);
-	}
-
-	alignExtraLarge(value) {
-		const bp = 'xl';
-		return this.align(value, bp);
-	}
+	align(value, bp)        {return this._updateResponsiveProperty('align-items', bp, value);}
+	alignSmall(value)       {return this.align(value, 'sm');}
+	alignMedium(value)      {return this.align(value, 'md');}
+	alignLarge(value)       {return this.align(value, 'lg');}
+	alignExtraLarge(value)  {return this.align(value, 'xl');}
 }
-
-
 
 
 class Col extends HTMLDivElement {
@@ -333,85 +289,25 @@ class Col extends HTMLDivElement {
 	}
 
 	//Column Classes
-	col(value, bp) {
-		const prop = 'col';
-        this._updateResponsiveProperty(prop, bp, value);
-		return this;
-	}
-
-	small(value) {
-		const bp = 'sm';
-		return this.col(value, bp);
-	}
-
-	medium(value) {
-		const bp = 'md';
-		return this.col(value, bp);
-	}
-
-	large(value) {
-		const bp = 'lg';
-		return this.col(value, bp);
-	}
-
-	extraLarge(value) {
-		const bp = 'xl';
-		return this.col(value, bp);
-	}
+	col(value, bp)      {return this._updateResponsiveProperty('col', bp, value);}
+	small(value)        {return this.col(value, 'sm');}
+	medium(value)       {return this.col(value, 'md');}
+	large(value)        {return this.col(value, 'lg');}
+	extraLarge(value)   {return this.col(value, 'xl');}
 
 	// Order Classes
-	order(value, bp) {
-		const prop = 'order';
-        this._updateResponsiveProperty(prop, bp, value);
-		return this;
-	}
-
-	orderSmall(value) {
-		const bp = 'sm';
-		return this.order(value, bp);
-	}
-
-	orderMedium(value) {
-		const bp = 'md';
-		return this.order(value, bp);
-	}
-
-	orderLarge(value) {
-		const bp = 'lg';
-		return this.order(value, bp);
-	}
-
-	orderExtraLarge(value) {
-		const bp = 'xl';
-		return this.order(value, bp);
-	}
+	order(value, bp)        {return this._updateResponsiveProperty('order', bp, value);}    
+	orderSmall(value)       {return this.order(value, 'sm');}
+	orderMedium(value)      {return this.order(value, 'md');}
+	orderLarge(value)       {return this.order(value, 'lg');}
+	orderExtraLarge(value)  {return this.order(value, 'xl');}
 
 	// Offset
-	offset(value, bp) {
-		const prop = 'offset';
-        this._updateResponsiveProperty(prop, bp, value);
-		return this;
-	}
-
-	offsetSmall(value) {
-		const bp = 'sm';
-		return this.offset(value, bp);
-	}
-
-	offsetMedium(value) {
-		const bp = 'md';
-		return this.offset(value, bp);
-	}
-
-	offsetLarge(value) {
-		const bp = 'lg';
-		return this.offset(value, bp);
-	}
-
-	offsetExtraLarge(value) {
-		const bp = 'xl';
-		return this.offset(value, bp);
-	}
+	offset(value, bp)       {return this._updateResponsiveProperty('offset', bp, value);}
+	offsetSmall(value)      {return this.offset(value, 'sm');}
+	offsetMedium(value)     {return this.offset(value, 'md');}
+	offsetLarge(value)      {return this.offset(value, 'lg');}
+	offsetExtraLarge(value) {return this.offset(value, 'xl');}
 }
 
 Object.assign(Col.prototype, breakpointMixin);

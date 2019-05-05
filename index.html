@@ -17,18 +17,20 @@
 	<script>
 		container = new Container();
 		row = new Row();
+		row.justify('between');
 
 		col1 = new Col();
 		col1.classList.add('bg-primary');
+		col1.col(1);
 		col1.padding(5);
 
 		col2 = new Col();
 		col2.classList.add('bg-secondary');
-		col2.padding(5);
+		col2.col(2);
 
 		col3 = new Col();
 		col3.classList.add('bg-success');
-		col3.padding(5);
+		col3.col(3)
 
 		row.appendChild(col1);
 		row.appendChild(col2)
