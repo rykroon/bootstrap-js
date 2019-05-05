@@ -26,6 +26,7 @@ class Container extends HTMLDivElement {
 	}
 }
 
+
 class BreakpointUtility {
     constructor(attributes) {
         this._breakpoints = [undefined, 'sm', 'md', 'lg', 'xl'];
@@ -75,13 +76,13 @@ class BreakpointUtility {
 	}
 }
 
+
 class Row extends HTMLDivElement {
 	constructor() {
 		super();
 		this.className='row';
 
-		this._breakpoints = [undefined, 'sm', 'md', 'lg', 'xl']
-		this._attributes = {
+		let attributes = {
 			'justify-content': {
 				'classes': {
 					undefined: null,
@@ -102,7 +103,10 @@ class Row extends HTMLDivElement {
 				},
 				values: ['start', 'end', 'center', 'baseline', 'stretch']
 			}		
-		};
+        };
+        
+        this.bpUtility = new BreakpointUtility(attributes);
+
 	}
 
 	//No Gutters
@@ -117,55 +121,14 @@ class Row extends HTMLDivElement {
 		} else {
 			this.classList.remove('no-gutters');
 		}
-	}
-
-	_addAttribute(attr, bp, value) {
-		//check for valid attribute
-		if (! attr in this._attributes) throw "Invalid attribute";
-
-		//Check for valid breakpoint
-		if (!this._breakpoints.includes(bp)) throw "Invalid breakpoint";
-
-		//check for valid value
-		let values = this._attributes[attr]['values'];
-		if (!values.includes(value)) throw "Invalid value";
-
-		//build className
-		let className = attr;
-		if (bp !== undefined) className += '-' + bp;
-		if (value !== undefined) className += '-' + value;
-
-		this.classList.add(className);
-		this._attributes[attr]['classes'][bp] = className;
-	}
-
-	_removeAttribute(attr, bp) {
-		//Check for valid attribute
-		if (! attr in this._attributes) throw "Invalid attribute";
-
-		//Check for valid breakpoint
-		if (!this._breakpoints.includes(bp)) throw "Invalid breakpoint";
-
-		//get current className
-		let className = this._attributes[attr]['classes'][bp];
-
-		this.classList.remove(className);
-		this._attributes[attr]['classes'][bp] = null;
-	}
-
-	_updateAttribute(attr, bp, value) {
-		this._removeAttribute(attr, bp);
-
-		if (value !== null) {
-			this._addAttribute(attr, bp, value);
-		}
-	}
-
+    }
+    
 	//Justify Content
 
 	justify(value, bp) {
 		const attr = 'justify-content';
-		this._updateAttribute(attr, bp, value);
+        //this._updateAttribute(attr, bp, value);
+        this.bpUtility.updateAttribute(this, attr, bp, value);
 		return this;
 	}
 
@@ -193,7 +156,8 @@ class Row extends HTMLDivElement {
 
 	align(value, bp) {
 		const attr = 'align-items';
-		this._updateAttribute(attr, bp, value);
+        //this._updateAttribute(attr, bp, value);
+        this.bpUtility.updateAttribute(this, attr, bp, value);
 		return this;
 	}
 
@@ -218,11 +182,12 @@ class Row extends HTMLDivElement {
 	}
 }
 
+
 class Col extends HTMLDivElement {
 	constructor() {
 		super();
 
-		this._attributes = {
+		let attributes = {
 			'col': {
 				'classes': {
 					undefined: null,
@@ -255,7 +220,7 @@ class Col extends HTMLDivElement {
 			}
         }
         
-        this.bpUtility = new BreakpointUtility(this._attributes);
+        this.bpUtility = new BreakpointUtility(attributes);
 
 		this.col();
 	}
