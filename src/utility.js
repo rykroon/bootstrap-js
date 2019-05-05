@@ -30,10 +30,10 @@ let breakpointMixin = {
             if (search == _class) return _class;
 
             let parts = _class.split('-');
-            let lastElement = parts.slice(-1)[0];
+            if (parts[0] != prop) continue;
+            let lastElement = parts.pop();
 
             if (! this._isValidBreakpoint(lastElement)) {
-                parts.pop();
                 if (search == parts.join('-')) return _class;
             }
         }
