@@ -92,12 +92,6 @@ let breakpointMixin = {
 	},
 
 	_removeResponsiveProperty(prop, bp) {
-		//check for valid property
-		if (! this._isValidResponsiveProperty(prop)) throw "Invalid property";
-
-		//Check for valid breakpoint
-		if (! this._isValidBreakpoint(bp)) throw "Invalid breakpoint";
-
         //Search for class name that matches property and breakpoint
         let className = this._searchForResponsiveProperty(prop, bp);
         this.classList.remove(className);
