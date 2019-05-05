@@ -54,16 +54,10 @@ let breakpointMixin = {
             if (parts[0] != prop) continue;
 
             if (parts.length == 1 && bp === undefined) return _class;
-            if (parts.length == 3 && bp == parts[1]) return _class;
+            if (parts.length >= 2 && bp == parts[1]) return _class;
 
-            if (parts.length == 2) {
-                let bpIsValid = this._isValidBreakpoint(parts[1]);
-
-                if ((bp === undefined && !bpIsValid) || 
-                    (bp == parts[1] && bpIsValid)) {
-                        return _class;
-                }
-            }
+            let bpIsValid = this._isValidBreakpoint(parts[1]);
+            if (parts.length == 2 && bp === undefined && !bpIsValid) return _class;
         }
 
         return false;
