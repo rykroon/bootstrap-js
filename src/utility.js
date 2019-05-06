@@ -31,11 +31,10 @@ let breakpointMixin = {
 
             let parts = _class.split('-');
             if (parts[0] != prop) continue;
-            let lastElement = parts.pop();
 
-            if (! this._isValidBreakpoint(lastElement)) {
-                if (search == parts.join('-')) return _class;
-            }
+            let validBp = this._isValidBreakpoint(parts[1]);
+            if (bp === undefined && !validBp) return _class;
+            if (bp == parts[1]) return _class;
         }
 
         return false;
