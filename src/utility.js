@@ -258,7 +258,11 @@ let flexMixin = {
                 'wrap',
                 'nowrap',
                 'wrap-reverse'
-            ]
+            ],
+            'justify-content': ['start', 'end', 'center', 'between', 'around'],
+            'align-items': ['start', 'end', 'center', 'baseline', 'stretch'],
+            'align-self': ['start', 'end', 'center', 'baseline', 'stretch'],
+            'order': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
         }
     },
 
@@ -360,6 +364,48 @@ let flexMixin = {
     flexMediumWrapReverse()     {return this.flexWrapReverse('md');},
     flexLargeWrapReverse()      {return this.flexWrapReverse('lg');},
     flexExtraLargeWrapReverse() {return this.flexWrapReverse('xl');},
+
+    //Justify Content
+    justifyContent(value, bp)       {return this._updateFlexProperty('justify-content', bp, value);},
+    justifyContentSmall(value)      {return this.justifyContent(value, 'sm')},
+    justifyContentMedium(value)     {return this.justifyContent(value, 'md')},
+    justifyContentLarge(value)      {return this.justifyContent(value, 'lg')},
+    justifyContentExtraLarge(value) {return this.justifyContent(value, 'xl')},
+
+    //Justify Content Start
+    justifyContentStart(bp)         {return this.justifyContent('start', bp);},
+    justifyContentSmallStart()      {return this.justifyContentStart('sm')},
+    justifyContentMediumStart()     {return this.justifyContentStart('md')},
+    justifyContentLargeStart()      {return this.justifyContentStart('lg')},
+    justifyContentExtraLargeStart() {return this.justifyContentStart('xl')},
+
+    //Justify Content End
+    justifyContentEnd(bp)         {return this.justifyContent('end', bp);},
+    justifyContentSmallEnd()      {return this.justifyContentEnd('sm')},
+    justifyContentMediumEnd()     {return this.justifyContentEnd('md')},
+    justifyContentLargeEnd()      {return this.justifyContentEnd('lg')},
+    justifyContentExtraLargeEnd() {return this.justifyContentEnd('xl')},
+
+    //Justify Content Center
+    justifyContentCenter(bp)         {return this.justifyContent('center', bp);},
+    justifyContentSmallCenter()      {return this.justifyContentCenter('sm')},
+    justifyContentMediumCenter()     {return this.justifyContentCenter('md')},
+    justifyContentLargeCenter()      {return this.justifyContentCenter('lg')},
+    justifyContentExtraLargeCenter() {return this.justifyContentCenter('xl')},
+
+    //Justify Content Center
+    justifyContentBetween(bp)         {return this.justifyContent('between', bp);},
+    justifyContentSmallBetween()      {return this.justifyContentBetween('sm')},
+    justifyContentMediumBetween()     {return this.justifyContentBetween('md')},
+    justifyContentLargeBetween()      {return this.justifyContentBetween('lg')},
+    justifyContentExtraLargeBetween() {return this.justifyContentBetween('xl')},
+
+    //Justify Content Around
+    justifyContentAround(bp)         {return this.justifyContent('around', bp);},
+    justifyContentSmallAround()      {return this.justifyContentAround('sm')},
+    justifyContentMediumAround()     {return this.justifyContentAround('md')},
+    justifyContentLargeAround()      {return this.justifyContentAround('lg')},
+    justifyContentExtraLargeAround() {return this.justifyContentAround('xl')},
 }
 
 
