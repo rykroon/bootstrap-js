@@ -255,8 +255,8 @@ let flexMixin = {
                 'grow-1',
                 'shrink-0',
                 'shrink-1',
-                'nowrap',
                 'wrap',
+                'nowrap',
                 'wrap-reverse'
             ]
         }
@@ -290,7 +290,76 @@ let flexMixin = {
     flexMediumRowReverse()     {return this.flexRowReverse('md');},
     flexLargeRowReverse()      {return this.flexRowReverse('lg');},
     flexExtraLargeRowReverse() {return this.flexRowReverse('xl');},
+
+    //Flex Column
+    flexColumn(bp)         {return this.flex('column', bp);},
+    flexSmallColumn()      {return this.flexColumn('sm');},
+    flexMediumColumn()     {return this.flexColumn('md');},
+    flexLargeColumn()      {return this.flexColumn('lg');},
+    flexExtraLargeColumn() {return this.flexColumn('xl');},
+
+    //Column Reverse
+    flexColumnReverse(bp)         {return this.flex('column-reverse', bp);},
+    flexSmallColumnReverse()      {return this.flexColumnReverse('sm');},
+    flexMediumColumnReverse()     {return this.flexColumnReverse('md');},
+    flexLargeColumnReverse()      {return this.flexColumnReverse('lg');},
+    flexExtraLargeColumnReverse() {return this.flexColumnReverse('xl');},
+
+    //Flex Fill
+    flexFill(bp)         {return this.flex('fill', bp);},
+    flexSmallFill()      {return this.flexFill('sm');},
+    flexMediumFill()     {return this.flexFill('md');},
+    flexLargeFill()      {return this.flexFill('lg');},
+    flexExtraLargeFill() {return this.flexFill('xl');},
+
+    //Flex Grow Off
+    flexGrowOff(bp)         {return this.flex('grow-0', bp);},
+    flexSmallGrowOff()      {return this.flexGrowOff('sm');},
+    flexMediumGrowOff()     {return this.flexGrowOff('md');},
+    flexLargeGrowOff()      {return this.flexGrowOff('lg');},
+    flexExtraLargeGrowOff() {return this.flexGrowOff('xl');},
     
+    //Flex Grow On
+    flexGrowOn(bp)         {return this.flex('grow-1', bp);},
+    flexSmallGrowOn()      {return this.flexGrowOn('sm');},
+    flexMediumGrowOn()     {return this.flexGrowOn('md');},
+    flexLargeGrowOn()      {return this.flexGrowOn('lg');},
+    flexExtraLargeGrowOn() {return this.flexGrowOn('xl');},
+
+    //Flex Shrink Off
+    flexShrinkOff(bp)         {return this.flex('shrink-0', bp);},
+    flexSmallShrinkOff()      {return this.flexShrinkOff('sm');},
+    flexMediumShrinkOff()     {return this.flexShrinkOff('md');},
+    flexLargeShrinkOff()      {return this.flexShrinkOff('lg');},
+    flexExtraLargeShrinkOff() {return this.flexShrinkOff('xl');},
+    
+    //Flex Shrink On
+    flexShrinkOn(bp)         {return this.flex('shrink-1', bp);},
+    flexSmallShrinkOn()      {return this.flexShrinkOn('sm');},
+    flexMediumShrinkOn()     {return this.flexShrinkOn('md');},
+    flexLargeShrinkOn()      {return this.flexShrinkOn('lg');},
+    flexExtraLargeShrinkOn() {return this.flexShrinkOn('xl');},
+
+    //Flex Wrap
+    flexWrap(bp)         {return this.flex('wrap', bp);},
+    flexSmallWrap()      {return this.flexWrap('sm');},
+    flexMediumWrap()     {return this.flexWrap('md');},
+    flexLargeWrap()      {return this.flexWrap('lg');},
+    flexExtraLargeWrap() {return this.flexWrap('xl');},
+
+    //Flex No Wrap
+    flexNoWrap(bp)         {return this.flex('nowrap', bp);},
+    flexSmallNoWrap()      {return this.flexNoWrap('sm');},
+    flexMediumNoWrap()     {return this.flexNoWrap('md');},
+    flexLargeNoWrap()      {return this.flexNoWrap('lg');},
+    flexExtraLargeNoWrap() {return this.flexNoWrap('xl');},
+
+    //Flex Wrap Reverse
+    flexWrapReverse(bp)         {return this.flex('wrap-reverse', bp);},
+    flexSmallWrapReverse()      {return this.flexWrapReverse('sm');},
+    flexMediumWrapReverse()     {return this.flexWrapReverse('md');},
+    flexLargeWrapReverse()      {return this.flexWrapReverse('lg');},
+    flexExtraLargeWrapReverse() {return this.flexWrapReverse('xl');},
 }
 
 
