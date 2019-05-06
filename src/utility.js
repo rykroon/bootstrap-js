@@ -242,7 +242,45 @@ let displayMixin = {
 
 }
 
+let flexMixin = {
+    get _flexProperties() {
+        return {
+            'flex': [
+                'row', 
+                'row-reverse',
+                'column', 
+                'column-reverse', 
+                'fill',
+                'grow-0',
+                'grow-1',
+                'shrink-0',
+                'shrink-1',
+                'nowrap',
+                'wrap',
+                'wrap-reverse'
+            ]
+        }
+    },
+
+    _updateFlexProperty(prop, bp, value) {
+        if (! (prop in this._responsiveProperties)) {
+            this._responsiveProperties[prop] = this._flexProperties[prop];
+        }
+
+        return this._updateResponsiveProperty(prop, bp, value);
+    },
+
+    flex(value, bp)     {return this._updateFlexProperty('flex', bp, value);},
+    flexSmall(value)    {return this.flex(value, 'sm');},
+    flexMedium(value)    {return this.flex(value, 'md');},
+    flexLarge(value)    {return this.flex(value, 'lg');},
+    flexExtraLarge(value)    {return this.flex(value, 'xl');},
+
+
+}
+
 
 Object.assign(HTMLElement.prototype, breakpointMixin);
 Object.assign(HTMLElement.prototype, spacingMixin);
 Object.assign(HTMLElement.prototype, displayMixin);
+Object.assign(HTMLElement.prototype, flexMixin);
