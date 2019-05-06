@@ -8,6 +8,16 @@ let breakpointMixin = {
         return {}
     },
 
+    get _responsiveClasses() {
+        return {
+            undefined: {},
+            'sm': {},
+            'md': {},
+            'lg': {},
+            'xl': {}
+        }
+    },
+
     _isValidResponsiveProperty(prop) {
         return prop in this._responsiveProperties;
     },
@@ -18,26 +28,6 @@ let breakpointMixin = {
 
     _isValidValueForResponsiveProperty(prop, value) {
         return this._responsiveProperties[prop].includes(value);
-    },
-
-    _searchForResponsiveProperty(prop, bp) {
-        let classes = this.className.split(" ");
-        let search = prop;
-        if (bp !== undefined) search += '-' + bp;
-
-        for (let idx in classes) {
-            let _class = classes[idx];
-            if (search == _class) return _class;
-
-            let parts = _class.split('-');
-            if (parts[0] != prop) continue;
-
-            let validBp = this._isValidBreakpoint(parts[1]);
-            if (bp === undefined && !validBp) return _class;
-            if (bp == parts[1]) return _class;
-        }
-
-        return false;
     },
 
     _addResponsiveProperty(prop, bp, value) {
@@ -59,13 +49,17 @@ let breakpointMixin = {
 		if (value !== undefined) className += '-' + value;
 
         this.classList.add(className);
+        this._responsiveClasses[bp][prop] = className;
         return className;
 	},
 
 	_removeResponsiveProperty(prop, bp) {
-        //Search for class name that matches property and breakpoint
-        let className = this._searchForResponsiveProperty(prop, bp);
-        this.classList.remove(className);
+        let className = this._responsiveClasses[bp][prop];
+
+        if (className) {
+            this.classList.remove(className);
+            this._responsiveClasses[bp][prop] = null;
+        }
         
         return className;
 	},
@@ -561,7 +555,6 @@ let flexMixin = {
     orderLarge(value)   {return this.order(value, 'lg')},
     orderMedium(value)  {return this.order(value, 'xl')},
 }
-
 
 Object.assign(HTMLElement.prototype, breakpointMixin);
 Object.assign(HTMLElement.prototype, spacingMixin);
