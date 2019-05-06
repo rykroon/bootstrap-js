@@ -234,12 +234,75 @@ let displayMixin = {
         return this._updateResponsiveProperty(prop, bp, value);
     },
 
+    //Display
     display(value, bp)          {return this._updateDisplayProperty('d', bp, value);},
-    displaySmall(value)         {return this.display(value, 'sm');},
-    displayMedium(value)        {return this.display(value, 'md');},
-    displayLarge(value)         {return this.display(value, 'lg');},
-    displayExtraLarge(value)    {return this.display(value, 'xl');},
+    displaySmall(value)         {return this.display(value, 'sm')},
+    displayMedium(value)        {return this.display(value, 'md')},
+    displayLarge(value)         {return this.display(value, 'lg')},
+    displayExtraLarge(value)    {return this.display(value, 'xl')},
 
+    //Display None
+    displayNone(bp)         {return this.display('none', bp)},
+    displaySmallNone()      {return this.displayNone('sm')},
+    displayMediumNone()     {return this.displayNone('md')},
+    displayLargeNone()      {return this.displayNone('lg')},
+    displayExtraLargeNone() {return this.displayNone('xl')},
+
+    //Display Inline
+    displayInline(bp)           {return this.display('inline', bp)},
+    displaySmallInline()        {return this.displayInline('sm')},
+    displayMediumInline()       {return this.displayInline('md')},
+    displayLargeInline()        {return this.displayInline('lg')},
+    displayExtraLargeInline()   {return this.displayInline('xl')},
+
+    //Display Inline Block
+    displayInlineBlock(bp)          {return this.display('inline-block', bp)},
+    displaySmallInlineBlock()       {return this.displayInlineBlock('sm')},
+    displayMediumInlineBlock()      {return this.displayInlineBlock('md')},
+    displayLargeInlineBlock()       {return this.displayInlineBlock('lg')},
+    displayExtraLargeInlineBlock()  {return this.displayInlineBlock('xl')},
+
+    //Display Block
+    displayBlock(bp)            {return this.display('block', bp)},
+    displaySmallBlock()         {return this.displayBlock('sm')},
+    displayMediumBlock()        {return this.displayBlock('md')},
+    displayLargeBlock()         {return this.displayBlock('lg')},
+    displayExtraLargeBlock()    {return this.displayBlock('xl')},
+
+    //Display Table
+    displayTable(bp)            {return this.display('table', bp)},
+    displaySmallTable()         {return this.displayTable('sm')},
+    displayMediumTable()        {return this.displayTable('md')},
+    displayLargeTable()         {return this.displayTable('lg')},
+    displayExtraLargeTable()    {return this.displayTable('xl')},
+
+    //Display Table Cell
+    displayTableCell(bp)            {return this.display('table-cell', bp)},
+    displaySmallTableCell()         {return this.displayTableCell('sm')},
+    displayMediumTableCell()        {return this.displayTableCell('md')},
+    displayLargeTableCell()         {return this.displayTableCell('lg')},
+    displayExtraLargeTableCell()    {return this.displayTableCell('xl')},
+
+    //Display Table Row
+    displayTableRow(bp)         {return this.display('table-row', bp)},
+    displaySmallTableRow()      {return this.displayTableRow('sm')},
+    displayMediumTableRow()     {return this.displayTableRow('md')},
+    displayLargeTableRow()      {return this.displayTableRow('lg')},
+    displayExtraLargeTableRow() {return this.displayTableRow('xl')},
+
+    //Display Flex
+    displayFlex(bp)         {return this.display('flex', bp)},
+    displaySmallFlex()      {return this.displayFlex('sm')},
+    displayMediumFlex()     {return this.displayFlex('md')},
+    displayLargeFlex()      {return this.displayFlex('lg')},
+    displayExtraLargeFlex() {return this.displayFlex('xl')},
+
+    //Display Inline Flex
+    displayInlineFlex(bp)           {return this.display('inline-flex', bp)},
+    displaySmallInlineFlex()        {return this.displayInlineFlex('sm')},
+    displayMediumInlineFlex()       {return this.displayInlineFlex('md')},
+    displayLargeInlineFlex()        {return this.displayInlineFlex('lg')},
+    displayExtraLargeInlineFlex()   {return this.displayInlineFlex('xl')},
 }
 
 
