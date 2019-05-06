@@ -443,55 +443,60 @@ let flexMixin = {
     alignItemsExtraLargeBaseline()  {return this.alignItemsBaseline('xl')},
 
     //Align Items Stretch
-    alignItemsStretch(bp)       {return this.alignItems('stretch', bp);},
-    alignItemsSmallStretch()      {return this.alignItemsStretch('sm')},
-    alignItemsMediumStretch()     {return this.alignItemsStretch('md')},
-    alignItemsLargeStretch()      {return this.alignItemsStretch('lg')},
-    alignItemsExtraLargeStretch() {return this.alignItemsStretch('xl')},
+    alignItemsStretch(bp)           {return this.alignItems('stretch', bp);},
+    alignItemsSmallStretch()        {return this.alignItemsStretch('sm')},
+    alignItemsMediumStretch()       {return this.alignItemsStretch('md')},
+    alignItemsLargeStretch()        {return this.alignItemsStretch('lg')},
+    alignItemsExtraLargeStretch()   {return this.alignItemsStretch('xl')},
 
     //Align Self
-    alignSelf(bp)       {return this._updateFlexProperty('align-self', bp, );},
-    alignSelfSmall()      {return this.alignSelf('sm')},
-    alignSelfMedium()     {return this.alignSelf('md')},
-    alignSelfLarge()      {return this.alignSelf('lg')},
-    alignSelfExtraLarge() {return this.alignSelf('xl')},
+    alignSelf(bp)           {return this._updateFlexProperty('align-self', bp, );},
+    alignSelfSmall()        {return this.alignSelf('sm')},
+    alignSelfMedium()       {return this.alignSelf('md')},
+    alignSelfLarge()        {return this.alignSelf('lg')},
+    alignSelfExtraLarge()   {return this.alignSelf('xl')},
 
     //Align Self Start
-    alignSelfStart(bp)       {return this.alignSelf('start', bp);},
-    alignSelfSmallStart()      {return this.alignSelfStart('sm')},
-    alignSelfMediumStart()     {return this.alignSelfStart('md')},
-    alignSelfLargeStart()      {return this.alignSelfStart('lg')},
-    alignSelfExtraLargeStart() {return this.alignSelfStart('xl')},
+    alignSelfStart(bp)          {return this.alignSelf('start', bp);},
+    alignSelfSmallStart()       {return this.alignSelfStart('sm')},
+    alignSelfMediumStart()      {return this.alignSelfStart('md')},
+    alignSelfLargeStart()       {return this.alignSelfStart('lg')},
+    alignSelfExtraLargeStart()  {return this.alignSelfStart('xl')},
 
     //Align Self End
-    alignSelfEnd(bp)       {return this.alignSelf('end', bp);},
-    alignSelfSmallEnd()      {return this.alignSelfEnd('sm')},
-    alignSelfMediumEnd()     {return this.alignSelfEnd('md')},
-    alignSelfLargeEnd()      {return this.alignSelfEnd('lg')},
-    alignSelfExtraLargeEnd() {return this.alignSelfEnd('xl')},
+    alignSelfEnd(bp)            {return this.alignSelf('end', bp);},
+    alignSelfSmallEnd()         {return this.alignSelfEnd('sm')},
+    alignSelfMediumEnd()        {return this.alignSelfEnd('md')},
+    alignSelfLargeEnd()         {return this.alignSelfEnd('lg')},
+    alignSelfExtraLargeEnd()    {return this.alignSelfEnd('xl')},
 
     //Align Self Center
-    alignSelfCenter(bp)       {return this.alignSelf('center', bp);},
+    alignSelfCenter(bp)         {return this.alignSelf('center', bp);},
     alignSelfSmallCenter()      {return this.alignSelfCenter('sm')},
     alignSelfMediumCenter()     {return this.alignSelfCenter('md')},
     alignSelfLargeCenter()      {return this.alignSelfCenter('lg')},
     alignSelfExtraLargeCenter() {return this.alignSelfCenter('xl')},
 
     //Align Self Baseline
-    alignSelfBaseline(bp)       {return this.alignSelf('baseline', bp);},
-    alignSelfSmallBaseline()      {return this.alignSelfBaseline('sm')},
-    alignSelfMediumBaseline()     {return this.alignSelfBaseline('md')},
-    alignSelfLargeBaseline()      {return this.alignSelfBaseline('lg')},
-    alignSelfExtraLargeBaseline() {return this.alignSelfBaseline('xl')},
+    alignSelfBaseline(bp)           {return this.alignSelf('baseline', bp);},
+    alignSelfSmallBaseline()        {return this.alignSelfBaseline('sm')},
+    alignSelfMediumBaseline()       {return this.alignSelfBaseline('md')},
+    alignSelfLargeBaseline()        {return this.alignSelfBaseline('lg')},
+    alignSelfExtraLargeBaseline()   {return this.alignSelfBaseline('xl')},
 
     //Align Self Stretch
-    alignSelfStretch(bp)       {return this.alignSelf('stretch', bp);},
-    alignSelfSmallStretch()      {return this.alignSelfStretch('sm')},
-    alignSelfMediumStretch()     {return this.alignSelfStretch('md')},
-    alignSelfLargeStretch()      {return this.alignSelfStretch('lg')},
-    alignSelfExtraLargeStretch() {return this.alignSelfStretch('xl')},
+    alignSelfStretch(bp)            {return this.alignSelf('stretch', bp);},
+    alignSelfSmallStretch()         {return this.alignSelfStretch('sm')},
+    alignSelfMediumStretch()        {return this.alignSelfStretch('md')},
+    alignSelfLargeStretch()         {return this.alignSelfStretch('lg')},
+    alignSelfExtraLargeStretch()    {return this.alignSelfStretch('xl')},
 
-    
+    //Order
+    order(value, bp)    {return this._updateFlexProperty('order', bp, value)},
+    orderSmall(value)   {return this.order(value, 'sm')},
+    orderMedium(value)  {return this.order(value, 'md')},
+    orderLarge(value)   {return this.order(value, 'lg')},
+    orderMedium(value)  {return this.order(value, 'xl')},
 }
 
 
