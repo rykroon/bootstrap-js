@@ -270,13 +270,27 @@ let flexMixin = {
         return this._updateResponsiveProperty(prop, bp, value);
     },
 
-    flex(value, bp)     {return this._updateFlexProperty('flex', bp, value);},
-    flexSmall(value)    {return this.flex(value, 'sm');},
-    flexMedium(value)    {return this.flex(value, 'md');},
-    flexLarge(value)    {return this.flex(value, 'lg');},
-    flexExtraLarge(value)    {return this.flex(value, 'xl');},
+    //Flex
+    flex(value, bp)         {return this._updateFlexProperty('flex', bp, value);},
+    flexSmall(value)        {return this.flex(value, 'sm');},
+    flexMedium(value)       {return this.flex(value, 'md');},
+    flexLarge(value)        {return this.flex(value, 'lg');},
+    flexExtraLarge(value)   {return this.flex(value, 'xl');},
 
+    //Flex Row
+    flexRow(bp)         {return this.flex('row', bp);},
+    flexSmallRow()      {return this.flexRow('sm');},
+    flexMediumRow()     {return this.flexRow('md');},
+    flexLargeRow()      {return this.flexRow('lg');},
+    flexExtraLargeRow() {return this.flexRow('xl');},
 
+    //Row Reverse
+    flexRowReverse(bp)         {return this.flex('row-reverse', bp);},
+    flexSmallRowReverse()      {return this.flexRowReverse('sm');},
+    flexMediumRowReverse()     {return this.flexRowReverse('md');},
+    flexLargeRowReverse()      {return this.flexRowReverse('lg');},
+    flexExtraLargeRowReverse() {return this.flexRowReverse('xl');},
+    
 }
 
 
