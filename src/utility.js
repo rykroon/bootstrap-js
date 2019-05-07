@@ -213,8 +213,8 @@ let displayMixin = {
                 'inline-block',
                 'block',
                 'table',
-                'table-cell',
                 'table-row',
+                'table-cell',
                 'flex',
                 'inline-flex'
             ]
@@ -270,19 +270,19 @@ let displayMixin = {
     displayLargeTable()         {return this.displayTable('lg')},
     displayExtraLargeTable()    {return this.displayTable('xl')},
 
-    //Display Table Cell
-    displayTableCell(bp)            {return this.display('table-cell', bp)},
-    displaySmallTableCell()         {return this.displayTableCell('sm')},
-    displayMediumTableCell()        {return this.displayTableCell('md')},
-    displayLargeTableCell()         {return this.displayTableCell('lg')},
-    displayExtraLargeTableCell()    {return this.displayTableCell('xl')},
-
     //Display Table Row
     displayTableRow(bp)         {return this.display('table-row', bp)},
     displaySmallTableRow()      {return this.displayTableRow('sm')},
     displayMediumTableRow()     {return this.displayTableRow('md')},
     displayLargeTableRow()      {return this.displayTableRow('lg')},
     displayExtraLargeTableRow() {return this.displayTableRow('xl')},
+
+    //Display Table Cell
+    displayTableCell(bp)            {return this.display('table-cell', bp)},
+    displaySmallTableCell()         {return this.displayTableCell('sm')},
+    displayMediumTableCell()        {return this.displayTableCell('md')},
+    displayLargeTableCell()         {return this.displayTableCell('lg')},
+    displayExtraLargeTableCell()    {return this.displayTableCell('xl')},
 
     //Display Flex
     displayFlex(bp)         {return this.display('flex', bp)},
@@ -304,21 +304,23 @@ let flexMixin = {
         return {
             'flex': [
                 'row', 
+                'column',
                 'row-reverse',
-                'column', 
                 'column-reverse', 
+                'wrap',
+                'nowrap',
+                'wrap-reverse',
                 'fill',
                 'grow-0',
                 'grow-1',
                 'shrink-0',
                 'shrink-1',
-                'wrap',
-                'nowrap',
-                'wrap-reverse'
+
             ],
             'justify-content': ['start', 'end', 'center', 'between', 'around'],
             'align-items': ['start', 'end', 'center', 'baseline', 'stretch'],
-            'align-self': ['start', 'end', 'center', 'baseline', 'stretch'],
+            'align-content': ['start', 'end', 'center', 'between', 'around', 'stretch'],
+            'align-self': ['auto', 'start', 'end', 'center', 'baseline', 'stretch'],
             'order': ['first', 'last', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
         }
     },
