@@ -28,7 +28,13 @@ class Container extends HTMLDivElement {
 		if (body) {
 			body.appendChild(this);
 		}
-	}
+    }
+    
+    static fromDOM() {
+        let container = document.querySelector('.container');
+        if (container instanceof Container) return container;
+        return Object.setPrototypeOf(container, Container.prototype);
+    }
 }
 
 
@@ -69,7 +75,13 @@ class Col extends HTMLDivElement {
         }
 
 		this.col();
-	}
+    }
+    
+    newRow() {
+        let row = new Row();
+        this.appendChild(row);
+        return row;ß
+    }
 
 	//Column Classes
 	col(value, bp)      {return this._updateResponsiveProperty('col', bp, value);}

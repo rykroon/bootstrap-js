@@ -12,11 +12,15 @@
 		<script src='src/grid.js'></script>
 	</head>
 	<body>
+		<div class='container'>
+
+		</div>
 
 	</body>
 
 	<script>
-		container = new Container();
+		//container = new Container();
+		container = Container.fromDOM();
 		row = container.newRow();
 		row.justifyContent('between');
 
