@@ -15,7 +15,13 @@ class Container extends HTMLDivElement {
 		} else {
 			this.classList.remove('container-fluid');
 		}
-	}
+    }
+    
+    newRow() {
+        let row = new Row();
+        this.appendChild(row);
+        return row;
+    }
 
 	appendToBody() {
 		let body = document.getElementsByTagName('body')[0];
@@ -24,9 +30,6 @@ class Container extends HTMLDivElement {
 		}
 	}
 }
-
-
-
 
 
 class Row extends HTMLDivElement {
@@ -46,6 +49,12 @@ class Row extends HTMLDivElement {
 		} else {
 			this.classList.remove('no-gutters');
 		}
+    }
+
+    newCol() {
+        let col = new Col();
+        this.appendChild(col);
+        return col;
     }
 }
 
