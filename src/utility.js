@@ -319,7 +319,7 @@ let flexMixin = {
             'justify-content': ['start', 'end', 'center', 'between', 'around'],
             'align-items': ['start', 'end', 'center', 'baseline', 'stretch'],
             'align-self': ['start', 'end', 'center', 'baseline', 'stretch'],
-            'order': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+            'order': ['first', 'last', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
         }
     },
 
@@ -554,6 +554,20 @@ let flexMixin = {
     orderMedium(value)  {return this.order(value, 'md')},
     orderLarge(value)   {return this.order(value, 'lg')},
     orderMedium(value)  {return this.order(value, 'xl')},
+
+    //Order First
+    orderFirst(bp)      {return this.order('first', bp)},
+    orderSmallFirst()   {return this.orderFirst('sm')},
+    orderMediumFirst()  {return this.orderFirst('md')},
+    orderLargeFirst()   {return this.orderFirst('lg')},
+    orderMediumFirst()  {return this.orderFirst('xl')},
+
+    //Order Last
+    orderLast(bp)      {return this.order('last', bp)},
+    orderSmallLast()   {return this.orderLast('sm')},
+    orderMediumLast()  {return this.orderLast('md')},
+    orderLargeLast()   {return this.orderLast('lg')},
+    orderMediumLast()  {return this.orderLast('xl')},
 }
 
 Object.assign(HTMLElement.prototype, breakpointMixin);
