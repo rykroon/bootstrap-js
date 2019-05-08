@@ -466,6 +466,55 @@ let flexMixin = {
     justifyContentLargeAround()      {return this.justifyContentAround('lg')},
     justifyContentExtraLargeAround() {return this.justifyContentAround('xl')},
 
+    //Align Content
+    alignContent(value, bp)         {return this._updateFlexProperty('align-content', bp, value)},
+    alignContentSmall(value)        {return this.alignContent(value, 'sm')},
+    alignContentMedium(value)       {return this.alignContent(value, 'md')},
+    alignContentLarge(value)        {return this.alignContent(value, 'lg')},
+    alignContentExtraLarge(value)   {return this.alignContent(value, 'xl')},
+
+    //Align Content Start
+    alignContentStart(bp)           {return this.alignContent('start', bp)},
+    alignContentSmallStart()        {return this.alignContentStart('sm')},
+    alignContentMediumStart()       {return this.alignContentStart('md')},
+    alignContentLargeStart()        {return this.alignContentStart('lg')},
+    alignContentExtraLargeStart()   {return this.alignContentStart('xl')},
+
+    //Align Content End
+    alignContentEnd(bp)           {return this.alignContent('end', bp)},
+    alignContentSmallEnd()        {return this.alignContentEnd('sm')},
+    alignContentMediumEnd()       {return this.alignContentEnd('md')},
+    alignContentLargeEnd()        {return this.alignContentEnd('lg')},
+    alignContentExtraLargeEnd()   {return this.alignContentEnd('xl')},
+
+    //Align Content Center
+    alignContentCenter(bp)           {return this.alignContent('center', bp)},
+    alignContentSmallCenter()        {return this.alignContentCenter('sm')},
+    alignContentMediumCenter()       {return this.alignContentCenter('md')},
+    alignContentLargeCenter()        {return this.alignContentCenter('lg')},
+    alignContentExtraLargeCenter()   {return this.alignContentCenter('xl')},
+
+    //Align Content Between
+    alignContentBetween(bp)           {return this.alignContent('between', bp)},
+    alignContentSmallBetween()        {return this.alignContentBetween('sm')},
+    alignContentMediumBetween()       {return this.alignContentBetween('md')},
+    alignContentLargeBetween()        {return this.alignContentBetween('lg')},
+    alignContentExtraLargeBetween()   {return this.alignContentBetween('xl')},
+
+    //Align Content Around
+    alignContentAround(bp)           {return this.alignContent('around', bp)},
+    alignContentSmallAround()        {return this.alignContentAround('sm')},
+    alignContentMediumAround()       {return this.alignContentAround('md')},
+    alignContentLargeAround()        {return this.alignContentAround('lg')},
+    alignContentExtraLargeAround()   {return this.alignContentAround('xl')},
+
+    //Align Content Stretch
+    alignContentStretch(bp)           {return this.alignContent('stretch', bp)},
+    alignContentSmallStretch()        {return this.alignContentStretch('sm')},
+    alignContentMediumStretch()       {return this.alignContentStretch('md')},
+    alignContentLargeStretch()        {return this.alignContentStretch('lg')},
+    alignContentExtraLargeStretch()   {return this.alignContentStretch('xl')},
+
     //Align Items
     alignItems(value, bp)       {return this._updateFlexProperty('align-items', bp, value);},
     alignItemsSmall(value)      {return this.alignItems(value, 'sm')},
