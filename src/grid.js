@@ -66,7 +66,7 @@ class Row extends HTMLDivElement {
 
 
 class Col extends HTMLDivElement {
-	constructor() {
+	constructor(value, bp) {
 		super();
 
 		this._responsiveProperties = {
@@ -74,7 +74,7 @@ class Col extends HTMLDivElement {
 			offset: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
         }
 
-		this.col();
+		this.col(value, bp);
     }
     
     newRow() {
