@@ -10,6 +10,7 @@
 
 		<script src='src/utility.js'></script>
 		<script src='src/grid.js'></script>
+		<script src='src/components.js'></script>
 	</head>
 	<body>
 		<div class='container'>
@@ -27,6 +28,10 @@
 		col1 = row.newCol();
 		col1.classList.add('bg-primary');
 		col1.padding(5);
+
+		card = new Card();
+		card.header = "hello";
+		col1.appendChild(card);
 
 		col2 = row.newCol();
 		col2.classList.add('bg-secondary');

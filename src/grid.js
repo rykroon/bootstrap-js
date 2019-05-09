@@ -80,7 +80,7 @@ class Col extends HTMLDivElement {
     newRow() {
         let row = new Row();
         this.appendChild(row);
-        return row;ß
+        return row;
     }
 
 	//Column Classes
