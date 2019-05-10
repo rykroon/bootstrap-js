@@ -23,7 +23,7 @@ class Card extends HTMLDivElement {
             if (! this._header) {
                 this._header = document.createElement('div');
                 this._header.classList.add('card-header');
-                this.insertBefore(this._header, this.body);
+                this.body.before(this._header);
             }
 
             this._header.textContent = value;
@@ -77,7 +77,7 @@ class Card extends HTMLDivElement {
                 this._subtitle.classList.add('card-subtitle');
                 
                 if (this._title) {
-                    this.body.insertBefore(this._subtitle, this._title.nextElementSibling);
+                    this._title.after(this._subtitle);
                     
                 } else {
                     this.body.insertBefore(this._subtitle, this.body.firstElementChild);
@@ -109,11 +109,13 @@ class Card extends HTMLDivElement {
                 this._text.classList.add('card-text');
 
                 if (this._subtitle) {
-                    this.body.insertBefore(this._text, this._subtitle.nextElementSibling);
+                    this._subtitle.after(this._text);
+
                 } else if (this._title) {
-                    this.body.insertBefore(this._text, this._title.nextElementSibling);
+                    this._title.after(this._text);
+
                 } else {
-                    this.body.insertBefore(this._text, this.body.lastElementChild);
+                    this.body.insertBefore(this._text, this.body.firstElementChild);
                 }
             }
 
@@ -140,7 +142,7 @@ class Card extends HTMLDivElement {
             if (! this._footer) {
                 this._footer = document.createElement('div');
                 this._footer.classList.add('card-footer');
-                this.insertBefore(this._footer, this.body.nextElementSibling);
+                this.body.after(this._footer);
             }
 
             this._footer.textContent = value;
