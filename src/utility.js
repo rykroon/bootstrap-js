@@ -228,75 +228,57 @@ let displayMixin = {
         return this._updateResponsiveProperty(prop, bp, value);
     },
 
-    //Display
-    display(value, bp)          {return this._updateDisplayProperty('d', bp, value);},
-    displaySmall(value)         {return this.display(value, 'sm')},
-    displayMedium(value)        {return this.display(value, 'md')},
-    displayLarge(value)         {return this.display(value, 'lg')},
-    displayExtraLarge(value)    {return this.display(value, 'xl')},
+    d(value, bp)    {return this._updateDisplayProperty('d', bp, value)},
 
-    //Display None
-    displayNone(bp)         {return this.display('none', bp)},
-    displaySmallNone()      {return this.displayNone('sm')},
-    displayMediumNone()     {return this.displayNone('md')},
-    displayLargeNone()      {return this.displayNone('lg')},
-    displayExtraLargeNone() {return this.displayNone('xl')},
+    dNone()         {return d('none')},
+    dInline()       {return d('inline')},
+    dInlineBlock()  {return d('inline-block')},
+    dBlock()        {return d('block')},
+    dTable()        {return d('table')},
+    dTableRow()     {return d('table-row')},
+    dTableCell()    {return d('table-cell')},
+    dFlex()         {return d('flex')},
+    dInlineFlex()   {return d('inline-flex')},
 
-    //Display Inline
-    displayInline(bp)           {return this.display('inline', bp)},
-    displaySmallInline()        {return this.displayInline('sm')},
-    displayMediumInline()       {return this.displayInline('md')},
-    displayLargeInline()        {return this.displayInline('lg')},
-    displayExtraLargeInline()   {return this.displayInline('xl')},
+    dSmNone()           {return d('none', 'sm')},
+    dSmInline()         {return d('inline', 'sm')},
+    dSmInlineBlock()    {return d('inline-block', 'sm')},
+    dSmBlock()          {return d('block', 'sm')},
+    dSmTable()          {return d('table', 'sm')},
+    dSmTableRow()       {return d('table-row', 'sm')},
+    dSmTableCell()      {return d('table-cell', 'sm')},
+    dSmFlex()           {return d('flex', 'sm')},
+    dSmInlineFlex()     {return d('inline-flex', 'sm')},
 
-    //Display Inline Block
-    displayInlineBlock(bp)          {return this.display('inline-block', bp)},
-    displaySmallInlineBlock()       {return this.displayInlineBlock('sm')},
-    displayMediumInlineBlock()      {return this.displayInlineBlock('md')},
-    displayLargeInlineBlock()       {return this.displayInlineBlock('lg')},
-    displayExtraLargeInlineBlock()  {return this.displayInlineBlock('xl')},
+    dMdNone()           {return d('none', 'md')},
+    dMdInline()         {return d('inline', 'md')},
+    dMdInlineBlock()    {return d('inline-block', 'md')},
+    dMdBlock()          {return d('block', 'md')},
+    dMdTable()          {return d('table', 'md')},
+    dMdTableRow()       {return d('table-row', 'md')},
+    dMdTableCell()      {return d('table-cell', 'md')},
+    dMdFlex()           {return d('flex', 'md')},
+    dMdInlineFlex()     {return d('inline-flex', 'md')},
 
-    //Display Block
-    displayBlock(bp)            {return this.display('block', bp)},
-    displaySmallBlock()         {return this.displayBlock('sm')},
-    displayMediumBlock()        {return this.displayBlock('md')},
-    displayLargeBlock()         {return this.displayBlock('lg')},
-    displayExtraLargeBlock()    {return this.displayBlock('xl')},
+    dLgNone()           {return d('none', 'lg')},
+    dLgInline()         {return d('inline', 'lg')},
+    dLgInlineBlock()    {return d('inline-block', 'lg')},
+    dLgBlock()          {return d('block', 'lg')},
+    dLgTable()          {return d('table', 'lg')},
+    dLgTableRow()       {return d('table-row', 'lg')},
+    dLgTableCell()      {return d('table-cell', 'lg')},
+    dLgFlex()           {return d('flex', 'lg')},
+    dLgInlineFlex()     {return d('inline-flex', 'lg')},
 
-    //Display Table
-    displayTable(bp)            {return this.display('table', bp)},
-    displaySmallTable()         {return this.displayTable('sm')},
-    displayMediumTable()        {return this.displayTable('md')},
-    displayLargeTable()         {return this.displayTable('lg')},
-    displayExtraLargeTable()    {return this.displayTable('xl')},
-
-    //Display Table Row
-    displayTableRow(bp)         {return this.display('table-row', bp)},
-    displaySmallTableRow()      {return this.displayTableRow('sm')},
-    displayMediumTableRow()     {return this.displayTableRow('md')},
-    displayLargeTableRow()      {return this.displayTableRow('lg')},
-    displayExtraLargeTableRow() {return this.displayTableRow('xl')},
-
-    //Display Table Cell
-    displayTableCell(bp)            {return this.display('table-cell', bp)},
-    displaySmallTableCell()         {return this.displayTableCell('sm')},
-    displayMediumTableCell()        {return this.displayTableCell('md')},
-    displayLargeTableCell()         {return this.displayTableCell('lg')},
-    displayExtraLargeTableCell()    {return this.displayTableCell('xl')},
-
-    //Display Flex
-    displayFlex(bp)         {return this.display('flex', bp)},
-    displaySmallFlex()      {return this.displayFlex('sm')},
-    displayMediumFlex()     {return this.displayFlex('md')},
-    displayLargeFlex()      {return this.displayFlex('lg')},
-    displayExtraLargeFlex() {return this.displayFlex('xl')},
-
-    //Display Inline Flex
-    displayInlineFlex(bp)           {return this.display('inline-flex', bp)},
-    displaySmallInlineFlex()        {return this.displayInlineFlex('sm')},
-    displayMediumInlineFlex()       {return this.displayInlineFlex('md')},
-    displayLargeInlineFlex()        {return this.displayInlineFlex('lg')},
-    displayExtraLargeInlineFlex()   {return this.displayInlineFlex('xl')},
+    dXlNone()           {return d('none', 'xl')},
+    dXlInline()         {return d('inline', 'xl')},
+    dXlInlineBlock()    {return d('inline-block', 'xl')},
+    dXlBlock()          {return d('block', 'xl')},
+    dXlTable()          {return d('table', 'xl')},
+    dXlTableRow()       {return d('table-row', 'xl')},
+    dXlTableCell()      {return d('table-cell', 'xl')},
+    dXlFlex()           {return d('flex', 'xl')},
+    dXlInlineFlex()     {return d('inline-flex', 'xl')},
 }
 
 let flexMixin = {
