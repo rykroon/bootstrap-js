@@ -62,6 +62,10 @@ class Row extends HTMLDivElement {
         this.appendChild(col);
         return col;
     }
+
+    static getRows() {
+        return document.getElementsByClassName('row');
+    }
 }
 
 
