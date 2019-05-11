@@ -25,21 +25,18 @@
 		row = container.newRow();
 		row.justifyContent('between');
 
-		col1 = row.newCol();
+		col1 = row.newCol().p(5);
 		col1.classList.add('bg-primary');
-		col1.padding(5);
 
 		card = new Card();
 		card.header = "hello";
 		col1.appendChild(card);
 
-		col2 = row.newCol();
+		col2 = row.newCol().p(5);
 		col2.classList.add('bg-secondary');
-		col2.padding(5);
 
-		col3 = row.newCol();
+		col3 = row.newCol().p(5);
 		col3.classList.add('bg-success');
-		col3.padding(5);
 
 		container.appendToBody();
 	</script>

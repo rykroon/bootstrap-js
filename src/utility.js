@@ -86,13 +86,13 @@ let spacingMixin = {
             'mr':   [0, 1, 2, 3, 4, 5, 'n1', 'n2', 'n3', 'n4', 'n5', 'auto'],
             'mx':   [0, 1, 2, 3, 4, 5, 'n1', 'n2', 'n3', 'n4', 'n5', 'auto'],
             'my':   [0, 1, 2, 3, 4, 5, 'n1', 'n2', 'n3', 'n4', 'n5', 'auto'],
-            'p':    [0, 1, 2, 3, 4, 5, 'auto'],
-            'pt':   [0, 1, 2, 3, 4, 5, 'auto'],
-            'pb':   [0, 1, 2, 3, 4, 5, 'auto'],
-            'pl':   [0, 1, 2, 3, 4, 5, 'auto'],
-            'pr':   [0, 1, 2, 3, 4, 5, 'auto'],
-            'px':   [0, 1, 2, 3, 4, 5, 'auto'],
-            'py':   [0, 1, 2, 3, 4, 5, 'auto']
+            'p':    [0, 1, 2, 3, 4, 5],
+            'pt':   [0, 1, 2, 3, 4, 5],
+            'pb':   [0, 1, 2, 3, 4, 5],
+            'pl':   [0, 1, 2, 3, 4, 5],
+            'pr':   [0, 1, 2, 3, 4, 5],
+            'px':   [0, 1, 2, 3, 4, 5],
+            'py':   [0, 1, 2, 3, 4, 5]
         }
     },
 
@@ -105,103 +105,98 @@ let spacingMixin = {
     },
 
     //Margin
-    margin(value, bp)       {return this._updateSpacingProperty('m', bp, value);},
-    marginSmall(value)      {return this.margin(value, 'sm');},
-    marginMedium(value)     {return this.margin(value, 'md');},
-    marginLarge(value)      {return this.margin(value, 'lg');},
-    marginExtraLarge(value) {return this.margin(value, 'xl');},
-    
-    //Margin Top
-    marginTop(value, bp)        {return this._updateSpacingProperty('mt', bp, value);},
-    marginTopSmall(value)       {return this.marginTop(value, 'sm');},
-    marginTopMedium(value)      {return this.marginTop(value, 'md');},
-    marginTopLarge(value)       {return this.marginTop(value, 'lg');},
-    marginTopExtraLarge(value)  {return this.marginTop(value, 'xl');},
 
-    //Margin Bottom
-    marginBottom(value, bp)        {return this._updateSpacingProperty('mb', bp, value);},
-    marginBottomSmall(value)       {return this.marginBottom(value, 'sm');},
-    marginBottomMedium(value)      {return this.marginBottom(value, 'md');},
-    marginBottomLarge(value)       {return this.marginBottom(value, 'lg');},
-    marginBottomExtraLarge(value)  {return this.marginBottom(value, 'xl');},
-
-    //Margin Left
-    marginLeft(value, bp)        {return this._updateSpacingProperty('ml', bp, value);},
-    marginLeftSmall(value)       {return this.marginLeft(value, 'sm');},
-    marginLeftMedium(value)      {return this.marginLeft(value, 'md');},
-    marginLeftLarge(value)       {return this.marginLeft(value, 'lg');},
-    marginLeftExtraLarge(value)  {return this.marginLeft(value, 'xl');},
-
-    //Margin Right
-    marginRight(value, bp)        {return this._updateSpacingProperty('mr', bp, value);},
-    marginRightSmall(value)       {return this.marginRight(value, 'sm');},
-    marginRightMedium(value)      {return this.marginRight(value, 'md');},
-    marginRightLarge(value)       {return this.marginRight(value, 'lg');},
-    marginRightExtraLarge(value)  {return this.marginRight(value, 'xl');},
-
-    //Margin X
-    marginX(value, bp)        {return this._updateSpacingProperty('mx', bp, value);},
-    marginXSmall(value)       {return this.marginX(value, 'sm');},
-    marginXMedium(value)      {return this.marginX(value, 'md');},
-    marginXLarge(value)       {return this.marginX(value, 'lg');},
-    marginXExtraLarge(value)  {return this.marginX(value, 'xl');},
-
-    //Margin Y
-    marginY(value, bp)        {return this._updateSpacingProperty('my', bp, value);},
-    marginYSmall(value)       {return this.marginY(value, 'sm');},
-    marginYMedium(value)      {return this.marginY(value, 'md');},
-    marginYLarge(value)       {return this.marginY(value, 'lg');},
-    marginYExtraLarge(value)  {return this.marginY(value, 'xl');},
+    m(value, bp)    {return this._updateSpacingProperty('m', bp, value)},
+    mAuto()         {return this.m('auto')},
+    mt(value, bp)   {return this._updateSpacingProperty('mt', bp, value)},
+    mtAuto()        {return this.mt('auto')},
+    mb(value, bp)   {return this._updateSpacingProperty('mb', bp, value)},
+    mbAuto()        {return this.mb('auto')},
+    ml(value, bp)   {return this._updateSpacingProperty('ml', bp, value)},
+    mlAuto()        {return this.ml('auto')},
+    mr(value, bp)   {return this._updateSpacingProperty('mr', bp, value)},
+    mrAuto()        {return this.mr('auto')},
+    mx(value, bp)   {return this._updateSpacingProperty('mx', bp, value)},
+    mxAuto()        {return this.mx('auto')},
+    my(value, bp)   {return this._updateSpacingProperty('my', bp, value)},
+    myAuto()        {return this.my('auto')},
 
     //Padding
-    padding(value, bp)       {return this._updateSpacingProperty('p', bp, value);},
-    paddingSmall(value)      {return this.padding(value, 'sm');},
-    paddingMedium(value)     {return this.padding(value, 'md');},
-    paddingLarge(value)      {return this.padding(value, 'lg');},
-    paddingExtraLarge(value) {return this.padding(value, 'xl');},
-    
-    //padding Top
-    paddingTop(value, bp)        {return this._updateSpacingProperty('pt', bp, value);},
-    paddingTopSmall(value)       {return this.paddingTop(value, 'sm');},
-    paddingTopMedium(value)      {return this.paddingTop(value, 'md');},
-    paddingTopLarge(value)       {return this.paddingTop(value, 'lg');},
-    paddingTopExtraLarge(value)  {return this.paddingTop(value, 'xl');},
+    p(value, bp)    {return this._updateSpacingProperty('p', bp, value)},
+    pt(value, bp)   {return this._updateSpacingProperty('pt', bp, value)},
+    pb(value, bp)   {return this._updateSpacingProperty('pb', bp, value)},
+    pl(value, bp)   {return this._updateSpacingProperty('pl', bp, value)},
+    pr(value, bp)   {return this._updateSpacingProperty('pr', bp, value)},
+    px(value, bp)   {return this._updateSpacingProperty('px', bp, value)},
+    py(value, bp)   {return this._updateSpacingProperty('py', bp, value)},
 
-    //padding Bottom
-    paddingBottom(value, bp)        {return this._updateSpacingProperty('pb', bp, value);},
-    paddingBottomSmall(value)       {return this.paddingBottom(value, 'sm');},
-    paddingBottomMedium(value)      {return this.paddingBottom(value, 'md');},
-    paddingBottomLarge(value)       {return this.paddingBottom(value, 'lg');},
-    paddingBottomExtraLarge(value)  {return this.paddingBottom(value, 'xl');},
+    //Small
+    mSm(value)  {return this.m(value, 'sm')},
+    mtSm(value) {return this.mt(value, 'sm')},
+    mbSm(value) {return this.mb(value, 'sm')},
+    mlSm(value) {return this.ml(value, 'sm')},
+    mrSm(value) {return this.mr(value, 'sm')},
+    mxSm(value) {return this.mx(value, 'sm')},
+    mySm(value) {return this.my(value, 'sm')},
 
-    //padding Left
-    paddingLeft(value, bp)        {return this._updateSpacingProperty('pl', bp, value);},
-    paddingLeftSmall(value)       {return this.paddingLeft(value, 'sm');},
-    paddingLeftMedium(value)      {return this.paddingLeft(value, 'md');},
-    paddingLeftLarge(value)       {return this.paddingLeft(value, 'lg');},
-    paddingLeftExtraLarge(value)  {return this.paddingLeft(value, 'xl');},
+    pSm(value)  {return this.p(value, 'sm')},
+    ptSm(value) {return this.pt(value, 'sm')},
+    pbSm(value) {return this.pb(value, 'sm')},
+    plSm(value) {return this.pl(value, 'sm')},
+    prSm(value) {return this.pr(value, 'sm')},
+    pxSm(value) {return this.px(value, 'sm')},
+    pySm(value) {return this.py(value, 'sm')},
 
-    //padding Right
-    paddingRight(value, bp)        {return this._updateSpacingProperty('pr', bp, value);},
-    paddingRightSmall(value)       {return this.paddingRight(value, 'sm');},
-    paddingRightMedium(value)      {return this.paddingRight(value, 'md');},
-    paddingRightLarge(value)       {return this.paddingRight(value, 'lg');},
-    paddingRightExtraLarge(value)  {return this.paddingRight(value, 'xl');},
+    //Medium
+    mMd(value)  {return this.m(value, 'md')},
+    mtMd(value) {return this.mt(value, 'md')},
+    mbMd(value) {return this.mb(value, 'md')},
+    mlMd(value) {return this.ml(value, 'md')},
+    mrMd(value) {return this.mr(value, 'md')},
+    mxMd(value) {return this.mx(value, 'md')},
+    myMd(value) {return this.my(value, 'md')},
 
-    //padding X
-    paddingX(value, bp)        {return this._updateSpacingProperty('px', bp, value);},
-    paddingXSmall(value)       {return this.paddingX(value, 'sm');},
-    paddingXMedium(value)      {return this.paddingX(value, 'md');},
-    paddingXLarge(value)       {return this.paddingX(value, 'lg');},
-    paddingXExtraLarge(value)  {return this.paddingX(value, 'xl');},
+    pMd(value)  {return this.p(value, 'md')},
+    ptMd(value) {return this.pt(value, 'md')},
+    pbMd(value) {return this.pb(value, 'md')},
+    plMd(value) {return this.pl(value, 'md')},
+    prMd(value) {return this.pr(value, 'md')},
+    pxMd(value) {return this.px(value, 'md')},
+    pyMd(value) {return this.py(value, 'md')},
 
-    //padding Y
-    paddingY(value, bp)        {return this._updateSpacingProperty('py', bp, value);},
-    paddingYSmall(value)       {return this.paddingY(value, 'sm');},
-    paddingYMedium(value)      {return this.paddingY(value, 'md');},
-    paddingYLarge(value)       {return this.paddingY(value, 'lg');},
-    paddingYExtraLarge(value)  {return this.paddingY(value, 'xl');},
+    //Large
+    mLg(value)  {return this.m(value, 'lg')},
+    mtLg(value) {return this.mt(value, 'lg')},
+    mbLg(value) {return this.mb(value, 'lg')},
+    mlLg(value) {return this.ml(value, 'lg')},
+    mrLg(value) {return this.mr(value, 'lg')},
+    mxLg(value) {return this.mx(value, 'lg')},
+    myLg(value) {return this.my(value, 'lg')},
 
+    pLg(value)  {return this.p(value, 'lg')},
+    ptLg(value) {return this.pt(value, 'lg')},
+    pbLg(value) {return this.pb(value, 'lg')},
+    plLg(value) {return this.pl(value, 'lg')},
+    prLg(value) {return this.pr(value, 'lg')},
+    pxLg(value) {return this.px(value, 'lg')},
+    pyLg(value) {return this.py(value, 'lg')},
+
+    //Extra Large
+    mXl(value)  {return this.m(value, 'xl')},
+    mtXl(value) {return this.mt(value, 'xl')},
+    mbXl(value) {return this.mb(value, 'xl')},
+    mlXl(value) {return this.ml(value, 'xl')},
+    mrXl(value) {return this.mr(value, 'xl')},
+    mxXl(value) {return this.mx(value, 'xl')},
+    myXl(value) {return this.my(value, 'xl')},
+
+    pXl(value)  {return this.p(value, 'xl')},
+    ptXl(value) {return this.pt(value, 'xl')},
+    pbXl(value) {return this.pb(value, 'xl')},
+    plXl(value) {return this.pl(value, 'xl')},
+    prXl(value) {return this.pr(value, 'xl')},
+    pxXl(value) {return this.px(value, 'xl')},
+    pyXl(value) {return this.py(value, 'xl')},
 }
 
 let displayMixin = {
