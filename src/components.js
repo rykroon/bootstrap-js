@@ -19,14 +19,14 @@ class Card extends HTMLDivElement {
     }
 
     set header(value) {
-        if (value) {
+        if (value || typeof(value) == 'string') {
             if (! this._header) {
                 this._header = document.createElement('div');
                 this._header.classList.add('card-header');
                 this.body.before(this._header);
             }
 
-            this._header.textContent = value;
+            if (typeof(value) == 'string') this._header.textContent = value;
         } else {
             if (this._header) {
                 this._header.remove();
@@ -138,14 +138,14 @@ class Card extends HTMLDivElement {
     }
 
     set footer(value) {
-        if (value) {
+        if (value || value === "") {
             if (! this._footer) {
                 this._footer = document.createElement('div');
                 this._footer.classList.add('card-footer');
                 this.body.after(this._footer);
             }
 
-            this._footer.textContent = value;
+            if (typeof(value) == 'string') this._footer.textContent = value;
         } else {
             if (this._footer) {
                 this._footer.remove();
