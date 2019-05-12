@@ -549,3 +549,7 @@ Object.assign(HTMLElement.prototype, breakpointMixin);
 Object.assign(HTMLElement.prototype, spacingMixin);
 Object.assign(HTMLElement.prototype, displayMixin);
 Object.assign(HTMLElement.prototype, flexMixin);
+
+String.prototype.toKebabCase = function() {
+    return this.replace(/[A-Z]/g, x => '-' + x.toLowerCase());
+}
