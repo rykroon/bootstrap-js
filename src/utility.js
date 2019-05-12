@@ -396,192 +396,221 @@ let flexMixin = {
     flexLgFill()    {return this.flexLg('fill')},
     flexXlFill()    {return this.flexXl('fill')},
 
-    //Flex Grow
+    //Flex Grow 0
     flexGrowZero()      {return this.flex('grow-0')},
-    flexGrowOne()       {return this.flex('grow-1')},
+    flexSmGrowZero()    {return this.flexSm('grow-0')},
+    flexMdGrowZero()    {return this.flexMd('grow-0')},
+    flexLgGrowZero()    {return this.flexLg('grow-0')},
+    flexXlGrowZero()    {return this.flexXl('grow-0')},
 
-    //Flex Shrink
+    //Flex Grow 1
+    flexGrowOne()   {return this.flex('grow-1')},
+    flexSmGrowOne() {return this.flexSm('grow-1')},
+    flexMdGrowOne() {return this.flexMd('grow-1')},
+    flexLgGrowOne() {return this.flexLg('grow-1')},
+    flexXlGrowOne() {return this.flexXl('grow-1')},
+
+    //Flex Shrink 0
     flexShrinkZero()    {return this.flex('shrink-0')},
+    flexSmShrinkZero()  {return this.flexSm('shrink-0')},
+    flexMdShrinkZero()  {return this.flexMd('shrink-0')},
+    flexLgShrinkZero()  {return this.flexLg('shrink-0')},
+    flexXlShrinkZero()  {return this.flexXl('shrink-0')},
+
+    //Flex Shrink 1
     flexShrinkOne()     {return this.flex('shrink-1')},
-
-    //Small
-    flexSmGrowZero()        {return this.flexSm('grow-0')},
-    flexSmGrowOne()         {return this.flexSm('grow-1')},
-    flexSmShrinkZero()      {return this.flexSm('shrink-0')},
-    flexSmShrinkOne()       {return this.flexSm('shrink-1')},
-
-    //Medium
-    flexMdGrowZero()      {return this.flexMd('grow-0')},
-    flexMdGrowOne()       {return this.flexMd('grow-1')},
-    flexMdShrinkZero()    {return this.flexMd('shrink-0')},
-    flexMdShrinkOne()     {return this.flexMd('shrink-1')},
-
-    //Large
-    flexLgGrowZero()      {return this.flexLg('grow-0')},
-    flexLgGrowOne()       {return this.flexLg('grow-1')},
-    flexLgShrinkZero()    {return this.flexLg('shrink-0')},
-    flexLgShrinkOne()     {return this.flexLg('shrink-1')},
-
-    //Extra Large
-    flexXlGrowZero()      {return this.flexXl('grow-0', 'xl')},
-    flexXlGrowOne()       {return this.flexXl('grow-1', 'xl')},
-    flexXlShrinkZero()    {return this.flexXl('shrink-0', 'xl')},
-    flexXlShrinkOne()     {return this.flexXl('shrink-1', 'xl')},
+    flexSmShrinkOne()   {return this.flexSm('shrink-1')},
+    flexMdShrinkOne()   {return this.flexMd('shrink-1')},
+    flexLgShrinkOne()   {return this.flexLg('shrink-1')},
+    flexXlShrinkOne()   {return this.flexXl('shrink-1')},
     
-    //Justify Content Breakpoints
+    //Justify Content Property
     justifyContent(value, bp)   {return this._updateFlexProperty('justify-content', bp, value)},
-    justifyContentSm(value)     {return justifyContent(value, 'sm')},
-    justifyContentMd(value)     {return justifyContent(value, 'md')},
-    justifyContentLg(value)     {return justifyContent(value, 'lg')},
-    justifyContentXl(value)     {return justifyContent(value, 'xl')},
 
+    //Justify Content Breakpoints
+    justifyContentSm(value) {return justifyContent(value, 'sm')},
+    justifyContentMd(value) {return justifyContent(value, 'md')},
+    justifyContentLg(value) {return justifyContent(value, 'lg')},
+    justifyContentXl(value) {return justifyContent(value, 'xl')},
+
+    //Justify Content Start
     justifyContentStart()   {return this.justifyContent('start')},
-    justifyContentEnd()     {return this.justifyContent('end')},
-    justifyContentCenter()  {return this.justifyContent('center')},
-    justifyContentBetween() {return this.justifyContent('between')},
-    justifyContentAround()  {return this.justifyContent('around')},
+    justifyContentSmStart() {return this.justifyContentSm('start')},
+    justifyContentMdStart() {return this.justifyContentMd('start')},
+    justifyContentLgStart() {return this.justifyContentLg('start')},
+    justifyContentXlStart() {return this.justifyContentXl('start')},
 
+    //Justify Content End
+    justifyContentEnd()     {return this.justifyContent('end')},
+    justifyContentSmEnd()   {return this.justifyContentSm('end')},
+    justifyContentMdEnd()   {return this.justifyContentMd('end')},
+    justifyContentLgEnd()   {return this.justifyContentLg('end')},
+    justifyContentXlEnd()   {return this.justifyContentXl('end')},
+
+    //Justify Content Center
+    justifyContentCenter()      {return this.justifyContent('center')},
+    justifyContentSmCenter()    {return this.justifyContentSm('center')},
+    justifyContentMdCenter()    {return this.justifyContentMd('center')},
+    justifyContentLgCenter()    {return this.justifyContentLg('center')},
+    justifyContentXlCenter()    {return this.justifyContentXl('center')},
+
+    //Justify Content Between
+    justifyContentBetween()     {return this.justifyContent('between')},
+    justifyContentSmBetween()   {return this.justifyContentSm('between')},
+    justifyContentMdBetween()   {return this.justifyContentMd('between')},
+    justifyContentLgBetween()   {return this.justifyContentLg('between')},
+    justifyContentXlBetween()   {return this.justifyContentXl('between')},
+
+    //Justify Content Around
+    justifyContentAround()      {return this.justifyContent('around')},
+    justifyContentSmAround()    {return this.justifyContentSm('around')},
+    justifyContentMdAround()    {return this.justifyContentMd('around')},
+    justifyContentLgAround()    {return this.justifyContentLg('around')},
+    justifyContentXlAround()    {return this.justifyContentXl('around')},
+
+    //Align Items Property
     alignItems(value, bp)   {return this._updateFlexProperty('align-items', bp, value)},
+
+    //Align Items Breakpoints
     alignItemsSm(value) {return this.alignItems(value, 'sm')},
     alignItemsMd(value) {return this.alignItems(value, 'md')},
     alignItemsLg(value) {return this.alignItems(value, 'lg')},
     alignItemsXl(value) {return this.alignItems(value, 'xl')},
 
-    alignItemsStart()       {return this.alignItems('start')},
-    alignItemsEnd()         {return this.alignItems('end')},
-    alignItemsCenter()      {return this.alignItems('center')},
-    alignItemsBaseline()    {return this.alignItems('baseline')},
-    alignItemsStretch()     {return this.alignItems('stretch')},
+    //Align Items Start
+    alignItemsStart()   {return this.alignItems('start')},
+    alignItemsSmStart() {return this.alignItemsSm('start')},
+    alignItemsMdStart() {return this.alignItemsMd('start')},
+    alignItemsLgStart() {return this.alignItemsLg('start')},
+    alignItemsXlStart() {return this.alignItemstXl('start')},
 
+    //Align Items End
+    alignItemsEnd()     {return this.alignItems('end')},
+    alignItemsSmEnd()   {return this.alignItemsSm('end')},
+    alignItemsMdEnd()   {return this.alignItemsMd('end')},
+    alignItemsLgEnd()   {return this.alignItemsLg('end')},
+    alignItemsXlEnd()   {return this.alignItemsXl('end')},
+
+    //Align Items Center
+    alignItemsCenter()      {return this.alignItems('center')},
+    alignItemsSmCenter()    {return this.alignItemsSm('center')},
+    alignItemsMdCenter()    {return this.alignItemsMd('center')},
+    alignItemsLgCenter()    {return this.alignItemsLg('center')},
+    alignItemsXlCenter()    {return this.alignItemsXl('center')},
+
+    alignItemsBaseline()    {return this.alignItems('baseline')},
+    alignItemsSmBaseline()  {return this.alignItemsSm('baseline')},
+    alignItemsMdBaseline()  {return this.alignItemsMd('baseline')},
+    alignItemsLgBaseline()  {return this.alignItemsLg('baseline')},
+    alignItemsXlBaseline()  {return this.alignItemsXl('baseline')},
+
+    alignItemsStretch()     {return this.alignItems('stretch')},
+    alignItemsSmStretch()   {return this.alignItemsSm('stretch')},
+    alignItemsMdStretch()   {return this.alignItemsMd('stretch')},
+    alignItemsLgStretch()   {return this.alignItemsLg('stretch')},
+    alignItemsXlStretch()   {return this.alignItemsXl('stretch')},
+
+    //Align Content Property
     alignContent(value, bp) {return this._updateFlexProperty('align-content', bp, value)},
-    alignContentSm(value)   {return this.alignContent(value)},
+
+    //Align Content Breakpoints
+    alignContentSm(value)   {return this.alignContent(value, 'sm')},
     alignContentMd(value)   {return this.alignContent(value, 'md')},
     alignContentLg(value)   {return this.alignContent(value, 'lg')},
     alignContentXl(value)   {return this.alignContent(value, 'xl')},
 
+    //Align Content Start
     alignContentStart()     {return this.alignContent('start')},
-    alignContentEnd()       {return this.alignContent('end')},
-    alignContentCenter()    {return this.alignContent('center')},
-    alignContentBetween()   {return this.alignContent('between')},
-    alignContentAround()    {return this.alignContent('around')},
-    alignContentStretch()   {return this.alignContent('stretch')},
+    alignContentSmStart()   {return this.alignContentSm('start')},
+    alignContentMdStart()   {return this.alignContentMd('start')},
+    alignContentLgStart()   {return this.alignContentLg('start')},
+    alignContentXlStart()   {return this.alignContentXl('start')},
 
+    //Align Content End
+    alignContentEnd()   {return this.alignContent('end')},
+    alignContentSmEnd() {return this.alignContentSm('end')},
+    alignContentMdEnd() {return this.alignContentMd('end')},
+    alignContentLgEnd() {return this.alignContentLg('end')},
+    alignContentXlEnd() {return this.alignContentXl('end')},
+
+    //Align Content Center
+    alignContentCenter()    {return this.alignContent('center')},
+    alignContentSmCenter()  {return this.alignContentSm('center')},
+    alignContentMdCenter()  {return this.alignContentMd('center')},
+    alignContentLgCenter()  {return this.alignContentLg('center')},
+    alignContentXlCenter()  {return this.alignContentXl('center')},
+
+    //Align Content Between
+    alignContentBetween()   {return this.alignContent('between')},
+    alignContentSmBetween() {return this.alignContentSm('between')},
+    alignContentMdBetween() {return this.alignContentMd('between')},
+    alignContentLgBetween() {return this.alignContentLg('between')},
+    alignContentXlBetween() {return this.alignContentXl('between')},
+
+    //Align Content Around
+    alignContentAround()    {return this.alignContent('around')},
+    alignContentSmAround()  {return this.alignContentSm('around')},
+    alignContentMdAround()  {return this.alignContentMd('around')},
+    alignContentLgAround()  {return this.alignContentLg('around')},
+    alignContentXlAround()  {return this.alignContentXl('around')},
+
+    //Align Content Stretch
+    alignContentStretch()   {return this.alignContent('stretch')},
+    alignContentSmStretch() {return this.alignContentSm('stretch')},
+    alignContentMdStretch() {return this.alignContentMd('stretch')},
+    alignContentLgStretch() {return this.alignContentLg('stretch')},
+    alignContentXlStretch() {return this.alignContentXl('stretch')},
+
+    //Align Self
     alignSelf(value, bp)    {return this._updateFlexProperty('align-self', bp, value)},
-    alignSelfSm(value)  {return this.alignSelf(value)},
+
+    //Align Self Breakpoints
+    alignSelfSm(value)  {return this.alignSelf(value, 'sm')},
     alignSelfMd(value)  {return this.alignSelf(value, 'md')},
     alignSelfLg(value)  {return this.alignSelf(value, 'lg')},
     alignSelfXl(value)  {return this.alignSelf(value, 'xl')},
 
+    //Align Self Auto
     alignSelfAuto()     {return this.alignSelf('auto')},
+    alignSelfSmAuto()   {return this.alignSelfSm('auto')},
+    alignSelfMdAuto()   {return this.alignSelfMd('auto')},
+    alignSelfLgAuto()   {return this.alignSelfLg('auto')},
+    alignSelfXlAuto()   {return this.alignSelfXl('auto')},
+
+    //Align Self Start
     alignSelfStart()    {return this.alignSelf('start')},
+    alignSelfSmStart()  {return this.alignSelfSm('start')},
+    alignSelfMdStart()  {return this.alignSelfMd('start')},
+    alignSelfLgStart()  {return this.alignSelfLg('start')},
+    alignSelfXlStart()  {return this.alignSelfXl('start')},
+
+    //Align Self End
     alignSelfEnd()      {return this.alignSelf('end')},
+    alignSelfSmEnd()    {return this.alignSelfSm('end')},
+    alignSelfMdEnd()    {return this.alignSelfMd('end')},
+    alignSelfLgEnd()    {return this.alignSelfLg('end')},
+    alignSelfXlEnd()    {return this.alignSelfXl('end')},
+
+    //Align Self Center
     alignSelfCenter()   {return this.alignSelf('center')},
-    alignSelfBaseline() {return this.alignSelf('baseline')},
-    alignSelfStretch()  {return this.alignSelf('stretch')},
+    alignSelfSmCenter() {return this.alignSelfSm('center')},
+    alignSelfMdCenter() {return this.alignSelfMd('center')},
+    alignSelfLgCenter() {return this.alignSelfLg('center')},
+    alignSelfXlCenter() {return this.alignSelfXl('center')},
 
-    justifyContentSmStart()   {return this.justifyContent('start')},
-    justifyContentSmEnd()     {return this.justifyContentSm('end')},
-    justifyContentSmCenter()  {return this.justifyContentSm('center')},
-    justifyContentSmBetween() {return this.justifyContentSm('between')},
-    justifyContentSmAround()  {return this.justifyContentSm('around')},
+    //Align Self Baseline
+    alignSelfBaseline()     {return this.alignSelf('baseline')},
+    alignSelfSmBaseline()   {return this.alignSelfSm('baseline')},
+    alignSelfMdBaseline()   {return this.alignSelfMd('baseline')},
+    alignSelfLgBaseline()   {return this.alignSelfLg('baseline')},
+    alignSelfXlBaseline()   {return this.alignSelfXl('baseline')},
 
-    alignItemsSmStart()       {return this.alignItemsSm('start')},
-    alignItemsSmEnd()         {return this.alignItemsSm('end')},
-    alignItemsSmCenter()      {return this.alignItemsSm('center')},
-    alignItemsSmBaseline()    {return this.alignItemsSm('baseline')},
-    alignItemsSmStretch()     {return this.alignItemsSm('stretch')},
-
-    alignContentSmStart()     {return this.alignContentSm('start')},
-    alignContentSmEnd()       {return this.alignContentSm('end')},
-    alignContentSmCenter()    {return this.alignContentSm('center')},
-    alignContentSmBetween()   {return this.alignContentSm('between')},
-    alignContentSmAround()    {return this.alignContentSm('around')},
-    alignContentSmStretch()   {return this.alignContentSm('stretch')},
-
-    alignSelfSmAuto()     {return this.alignSelfSm('auto')},
-    alignSelfSmStart()    {return this.alignSelfSm('start')},
-    alignSelfSmEnd()      {return this.alignSelfSm('end')},
-    alignSelfSmCenter()   {return this.alignSelfSm('center')},
-    alignSelfSmBaseline() {return this.alignSelfSm('baseline')},
-    alignSelfSmStretch()  {return this.alignSelfSm('stretch')},
-
-    justifyContentMdStart()   {return this.justifyContentMd('start')},
-    justifyContentMdEnd()     {return this.justifyContentMd('end')},
-    justifyContentMdCenter()  {return this.justifyContentMd('center')},
-    justifyContentMdBetween() {return this.justifyContentMd('between')},
-    justifyContentMdAround()  {return this.justifyContentMd('around')},
-
-    alignItemsMdStart()       {return this.alignItemsMd('start')},
-    alignItemsMdEnd()         {return this.alignItemsMd('end')},
-    alignItemsMdCenter()      {return this.alignItemsMd('center')},
-    alignItemsMdBaseline()    {return this.alignItemsMd('baseline')},
-    alignItemsMdStretch()     {return this.alignItemsMd('stretch')},
-
-    alignContentMdStart()     {return this.alignContentMd('start')},
-    alignContentMdEnd()       {return this.alignContentMd('end')},
-    alignContentMdCenter()    {return this.alignContentMd('center')},
-    alignContentMdBetween()   {return this.alignContentMd('between')},
-    alignContentMdAround()    {return this.alignContentMd('around')},
-    alignContentMdStretch()   {return this.alignContentMd('stretch')},
-
-    alignSelfMdAuto()     {return this.alignSelfMd('auto')},
-    alignSelfMdStart()    {return this.alignSelfMd('start')},
-    alignSelfMdEnd()      {return this.alignSelfMd('end')},
-    alignSelfMdCenter()   {return this.alignSelfMd('center')},
-    alignSelfMdBaseline() {return this.alignSelfMd('baseline')},
-    alignSelfMdStretch()  {return this.alignSelfMd('stretch')},
-
-    justifyContentLgStart()   {return this.justifyContentLg('start')},
-    justifyContentLgEnd()     {return this.justifyContentLg('end')},
-    justifyContentLgCenter()  {return this.justifyContentLg('center')},
-    justifyContentLgBetween() {return this.justifyContentLg('between')},
-    justifyContentLgAround()  {return this.justifyContentLg('around')},
-
-    alignItemsLgStart()       {return this.alignItemsLg('start')},
-    alignItemsLgEnd()         {return this.alignItemsLg('end')},
-    alignItemsLgCenter()      {return this.alignItemsLg('center')},
-    alignItemsLgBaseline()    {return this.alignItemsLg('baseline')},
-    alignItemsLgStretch()     {return this.alignItemsLg('stretch')},
-
-    alignContentLgStart()     {return this.alignContentLg('start')},
-    alignContentLgEnd()       {return this.alignContentLg('end')},
-    alignContentLgCenter()    {return this.alignContentLg('center')},
-    alignContentLgBetween()   {return this.alignContentLg('between')},
-    alignContentLgAround()    {return this.alignContentLg('around')},
-    alignContentLgStretch()   {return this.alignContentLg('stretch')},
-
-    alignSelfLgAuto()     {return this.alignSelfLg('auto')},
-    alignSelfLgStart()    {return this.alignSelfLg('start')},
-    alignSelfLgEnd()      {return this.alignSelfLg('end')},
-    alignSelfLgCenter()   {return this.alignSelfLg('center')},
-    alignSelfLgBaseline() {return this.alignSelfLg('baseline')},
-    alignSelfLgStretch()  {return this.alignSelfLg('stretch')},
-
-    justifyContentXlStart()   {return this.justifyContentXl('start', 'xl')},
-    justifyContentXlEnd()     {return this.justifyContentXl('end', 'xl')},
-    justifyContentXlCenter()  {return this.justifyContentXl('center', 'xl')},
-    justifyContentXlBetween() {return this.justifyContentXl('between', 'xl')},
-    justifyContentXlAround()  {return this.justifyContentXl('around', 'xl')},
-
-    alignItemsXlStart()       {return this.justifyContentXl('start', 'xl')},
-    alignItemsXlEnd()         {return this.alignItemsXl('end', 'xl')},
-    alignItemsXlCenter()      {return this.alignItemsXl('center', 'xl')},
-    alignItemsXlBaseline()    {return this.alignItemsXl('baseline', 'xl')},
-    alignItemsXlStretch()     {return this.alignItemsXl('stretch', 'xl')},
-
-    alignContentXlStart()     {return this.alignContentXl('start', 'xl')},
-    alignContentXlEnd()       {return this.alignContentXl('end', 'xl')},
-    alignContentXlCenter()    {return this.alignContentXl('center', 'xl')},
-    alignContentXlBetween()   {return this.alignContentXl('between', 'xl')},
-    alignContentXlAround()    {return this.alignContentXl('around', 'xl')},
-    alignContentXlStretch()   {return this.alignContentXl('stretch', 'xl')},
-
-    alignSelfXlAuto()     {return this.alignSelfXl('auto', 'xl')},
-    alignSelfXlStart()    {return this.alignSelfXl('start', 'xl')},
-    alignSelfXlEnd()      {return this.alignSelfXl('end', 'xl')},
-    alignSelfXlCenter()   {return this.alignSelfXl('center', 'xl')},
-    alignSelfXlBaseline() {return this.alignSelfXl('baseline', 'xl')},
-    alignSelfXlStretch()  {return this.alignSelfXl('stretch', 'xl')},
+    //Align Self Stretch
+    alignSelfStretch()      {return this.alignSelf('stretch')},
+    alignSelfSmStretch()    {return this.alignSelfSm('stretch')},
+    alignSelfMdStretch()    {return this.alignSelfMd('stretch')},
+    alignSelfLgStretch()    {return this.alignSelfLg('stretch')},
+    alignSelfXlStretch()    {return this.alignSelfXl('stretch')},
 
     //Order Property
     order(value, bp)    {return this._updateFlexProperty('order', bp, value)},
