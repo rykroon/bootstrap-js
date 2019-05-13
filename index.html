@@ -32,10 +32,10 @@
 		card.header = "hello";
 		col1.appendChild(card);
 
-		col2 = row.newCol().p(5);
+		col2 = col1.newColAfter().p(5); //row.newCol().p(5);
 		col2.classList.add('bg-secondary');
 
-		col3 = row.newCol().p(5);
+		col3 = col1.newColBefore().p(5);//row.newCol().p(5);
 		col3.classList.add('bg-success');
 
 		container.appendToBody();

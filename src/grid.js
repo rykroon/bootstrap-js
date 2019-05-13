@@ -63,6 +63,18 @@ class Row extends HTMLDivElement {
         return col;
     }
 
+    newRowBefore() {
+        let row = new Row();
+        this.before(row);
+        return row;
+    }
+
+    newRowAfter() {
+        let row = new Row();
+        this.after(row);
+        return row;
+    }
+
     static getRows() {
         return document.getElementsByClassName('row');
     }
@@ -87,19 +99,41 @@ class Col extends HTMLDivElement {
         return row;
     }
 
-	//Column Classes
-	col(value, bp)      {return this._updateResponsiveProperty('col', bp, value);}
-	small(value)        {return this.col(value, 'sm');}
-	medium(value)       {return this.col(value, 'md');}
-	large(value)        {return this.col(value, 'lg');}
-	extraLarge(value)   {return this.col(value, 'xl');}
+    newColBefore() {
+        let col = new Col();
+        this.before(col);
+        return col;
+    }
+
+    newColAfter() {
+        let col = new Col();
+        this.after(col);
+        return col;
+    }
+
+	//Column Property
+    col(value, bp)      {return this._updateResponsiveProperty('col', bp, value)}
+    
+    //Column Breakpoints
+	colSm(value)    {return this.col(value, 'sm')}
+	colMd(value)    {return this.col(value, 'md')}
+	colLg(value)    {return this.col(value, 'lg')}
+    colXl(value)    {return this.col(value, 'xl')}
+    
+    //Column Auto
+	colSmAuto()    {return this.colSm('auto')}
+	colMdAuto()    {return this.colMd('auto')}
+	colLgAuto()    {return this.colLg('auto')}
+	colXlAuto()    {return this.colXl('auto')}
 
 	// Offset
-	offset(value, bp)       {return this._updateResponsiveProperty('offset', bp, value);}
-	offsetSmall(value)      {return this.offset(value, 'sm');}
-	offsetMedium(value)     {return this.offset(value, 'md');}
-	offsetLarge(value)      {return this.offset(value, 'lg');}
-	offsetExtraLarge(value) {return this.offset(value, 'xl');}
+    offset(value, bp)       {return this._updateResponsiveProperty('offset', bp, value)}
+    
+    //Offset Breakpoints
+	offsetSm(value) {return this.offset(value, 'sm')}
+	offsetMd(value) {return this.offset(value, 'md')}
+	offsetLg(value) {return this.offset(value, 'lg')}
+	offsetXl(value) {return this.offset(value, 'xl')}
 }
 
 
