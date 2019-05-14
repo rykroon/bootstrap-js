@@ -1,3 +1,48 @@
+class Btn extends HTMLButtonElement {
+    constructor() {
+        super();
+        this.className = 'btn'; 
+    }
+
+    get large() {
+        return this.classList.contains('btn-lg');
+    }
+
+    set large(value) {
+        if (value) {
+            this.small = false;
+            this.classList.add('btn-lg');
+        } else {
+            this.classList.remove('btn-lg');
+        }
+    }
+
+    get small() {
+        return this.classList.contains('btn-sm');
+    }
+
+    set small(value) {
+        if (value) {
+            this.large = false;
+            this.classList.add('btn-sm');
+        } else {
+            this.classList.remove('btn-sm');
+        }
+    }
+
+    get block() {
+        return this.classList.contains('btn-block');
+    }
+
+    set block(value) {
+        if (value) {
+            this.classList.add('btn-block');
+        } else {
+            this.classList.remove('btn-block');
+        }
+    }
+}
+
 
 class Card extends HTMLDivElement {
     constructor() {
@@ -156,48 +201,126 @@ class Card extends HTMLDivElement {
 
 }
 
-class Btn extends HTMLButtonElement {
+
+class Table extends HTMLTableElement {
     constructor() {
         super();
-        this.className = 'btn'; 
+        this.classList.add('table');
     }
 
-    get large() {
-        return this.classList.contains('btn-lg');
-    }
-
-    set large(value) {
+    _toggleProperty(prop, value) {
         if (value) {
-            this.classList.remove('btn-sm');
-            this.classList.add('btn-lg');
+            this.classList.add(prop);
         } else {
-            this.classList.remove('btn-lg');
+            this.classList.remove(prop);
         }
     }
 
+    //Striped
+    get striped() {
+        return this.classList.contains('table-striped');
+    }
+
+    set striped(value) {
+        this._toggleProperty('table-striped', value);
+    }
+
+    //Bordered
+    get bordered() {
+        return this.classList.contains('table-bordered');
+    }
+
+    set bordered(value) {
+        if (value) this.borderless = false;
+       this._toggleProperty('table-bordered', value);
+    }
+
+    //Borderless
+    get borderless() {
+        return this.classList.contains('table-borderless');
+    }
+
+    set borderless() {
+        if (value)  this.bordered = false;
+        this._toggleProperty('table-borderless', value);
+    }
+
+    //Hover
+    get hover() {
+        return this.classList.contains('table-hover');
+    }
+
+    set hover(value) {
+        this._toggleProperty('table-hover', value);
+    }
+
+    //Small
     get small() {
-        return this.classList.contains('btn-sm');
+        return this.classList.contains('table-sm');
     }
 
     set small(value) {
+        this._toggleProperty('table-sm', value);
+    }
+
+    //responsive
+
+    get theadElement() {
+        return this._thead;
+    }
+
+    get tbodyElement() {
+        return this._tbody;
+    }
+
+    get tfootElement() {
+        return this._tfoot;
+    }
+}
+
+
+class TableHead extends HTMLTableSectionElement {
+    constructor() {
+        super();
+
+    }
+
+    get light() {
+        return this.classList.contains('thead-light');
+    }
+
+    set light(value) {
         if (value) {
-            this.classList.remove('btn-lg');
-            this.classList.add('btn-sm');
+            this.classList.remove('thead-dark');
+            this.classList.add('thead-light');
         } else {
-            this.classList.remove('btn-sm');
+            this.classList.remove('thead-light');
         }
     }
 
-    get block() {
-        return this.classList.contains('btn-block');
+    get dark() {
+        return this.classList.contains('thead-dark');
     }
 
-    set block(value) {
+    set dark(value) {
         if (value) {
-            this.classList.add('btn-block');
+            this.classList.remove('thead-light');
+            this.classList.add('thead-dark');
         } else {
-            this.classList.remove('btn-block');
+            this.classList.remove('thead-dark');
         }
+    }
+}
+
+class TableBody extends HTMLTableSectionElement {
+    constructor() {
+        super();
+    }
+}
+
+class TableRow extends HTMLTableRowElement {
+    constructor() {
+        super();
     }
 }
 
