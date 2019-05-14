@@ -206,6 +206,10 @@ class Table extends HTMLTableElement {
     constructor() {
         super();
         this.classList.add('table');
+
+        this._thead = null;
+        this._tbody = null;
+        this._tfoot = null;
     }
 
     _toggleProperty(prop, value) {
@@ -240,7 +244,7 @@ class Table extends HTMLTableElement {
         return this.classList.contains('table-borderless');
     }
 
-    set borderless() {
+    set borderless(value) {
         if (value)  this.bordered = false;
         this._toggleProperty('table-borderless', value);
     }
@@ -265,16 +269,70 @@ class Table extends HTMLTableElement {
 
     //responsive
 
-    get theadElement() {
+    get thead() {
         return this._thead;
     }
 
-    get tbodyElement() {
+    set thead(value) {
+        if (value === true && this._head === null) {
+            this._thead = new TableHead();
+            if (this.firstElementChild) {
+                this.firstElementChild.before(this._head);
+            } else {
+                this.appendChild(this._head);
+            }
+        }
+
+        if (value === false && this._thead !== null) {
+            this._thead.remove();
+            this._thead = null;
+        }
+    }
+
+    get tbody() {
         return this._tbody;
     }
 
-    get tfootElement() {
+    set tbody(value) {
+        if (value === true && this._tbody === null) {
+            this._tbody = new TableBody();
+
+            if (this._thead) {
+                this._thead.after(this._tbody);
+
+            } else if (this._tfoot) {
+                this._tfoot.before(this._tbody);
+
+            } else {
+                this.appendChild(this._tbody);
+            }
+        } 
+
+        if (value === false && this._tbody !== null) {
+            this._tbody.remove();
+            this._tbody = null;
+        }
+    }
+
+    get tfoot() {
         return this._tfoot;
+    }
+
+    set tfoot(value) {
+        if (value === true && this._tfoot === null) {
+            this._tfoot = new TableFoot();
+
+            if (this.lastElementChild) {
+                this.lastElementChild.after(this._tfoot);
+            } else {
+                this.appendChild(this._tfoot);
+            }
+        } 
+
+        if (value === false && this._tfoot !== null) {
+            this._tfoot.remove();
+            this._tfoot = null;
+        }
     }
 }
 
@@ -312,11 +370,20 @@ class TableHead extends HTMLTableSectionElement {
     }
 }
 
+
 class TableBody extends HTMLTableSectionElement {
     constructor() {
         super();
     }
 }
+
+
+class TableFoot extends HTMLTableSectionElement {
+    constructor() {
+        super();
+    }
+}
+
 
 class TableRow extends HTMLTableRowElement {
     constructor() {
