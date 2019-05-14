@@ -368,12 +368,24 @@ class TableHead extends HTMLTableSectionElement {
             this.classList.remove('thead-dark');
         }
     }
+
+    newRow() {
+        let row = new TableRow();
+        this.appendChild(row);
+        return row;
+    }
 }
 
 
 class TableBody extends HTMLTableSectionElement {
     constructor() {
         super();
+    }
+
+    newRow() {
+        let row = new TableRow();
+        this.appendChild(row);
+        return row;
     }
 }
 
@@ -382,10 +394,22 @@ class TableFoot extends HTMLTableSectionElement {
     constructor() {
         super();
     }
+
+    newRow() {
+        let row = new TableRow();
+        this.appendChild(row);
+        return row;
+    }
 }
 
 
 class TableRow extends HTMLTableRowElement {
+    constructor() {
+        super();
+    }
+}
+
+class TableCell extends HTMLTableCellElement {
     constructor() {
         super();
     }
