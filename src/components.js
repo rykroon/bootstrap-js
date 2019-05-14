@@ -210,6 +210,9 @@ class Table extends HTMLTableElement {
         this._thead = null;
         this._tbody = null;
         this._tfoot = null;
+
+        this.thead = true;
+        this.tbody = true;
     }
 
     _toggleProperty(prop, value) {
@@ -274,12 +277,12 @@ class Table extends HTMLTableElement {
     }
 
     set thead(value) {
-        if (value === true && this._head === null) {
+        if (value === true && this._thead === null) {
             this._thead = new TableHead();
             if (this.firstElementChild) {
-                this.firstElementChild.before(this._head);
+                this.firstElementChild.before(this._thead);
             } else {
-                this.appendChild(this._head);
+                this.appendChild(this._thead);
             }
         }
 
@@ -407,13 +410,50 @@ class TableRow extends HTMLTableRowElement {
     constructor() {
         super();
     }
+
+    newCell(text) {
+        let cell = null;
+
+        if (this.parentElement instanceof TableHead) {
+            cell = new TableHeaderCell(text);
+        } else {
+            cell = new TableDataCell(text);
+        }
+
+        this.appendChild(cell)
+        return cell;
+    }
 }
 
 class TableCell extends HTMLTableCellElement {
-    constructor() {
+    constructor(text) {
         super();
+
+        if (text) {
+            this.textContent = text;
+        }
+    }
+}
+
+class TableDataCell extends TableCell {
+    constructor(text) {
+        super(text);
+    }
+}
+
+class TableHeaderCell extends TableCell {
+    constructor(text) {
+        super(text);
     }
 }
 
 window.customElements.define('bs-button', Btn, {extends: 'button'});
 window.customElements.define('bs-card', Card, {extends: 'div'});
+
+window.customElements.define('bs-table', Table, {extends: 'table'});
+window.customElements.define('bs-table-head', TableHead, {extends: 'thead'});
+window.customElements.define('bs-table-body', TableBody, {extends: 'tbody'});
+window.customElements.define('bs-table-foot', TableFoot, {extends: 'tfoot'});
+window.customElements.define('bs-table-row', TableRow, {extends: 'tr'});
+window.customElements.define('bs-table-data-cell', TableDataCell, {extends: 'td'});
+window.customElements.define('bs-table-header-cell', TableHeaderCell, {extends: 'th'});
