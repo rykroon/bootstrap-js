@@ -340,10 +340,22 @@ class Table extends HTMLTableElement {
 }
 
 
-class TableHead extends HTMLTableSectionElement {
+class TableSection extends HTMLTableSectionElement {
     constructor() {
         super();
+    }
 
+    newRow() {
+        let row = new TableRow();
+        this.appendChild(row);
+        return row;
+    }
+}
+
+
+class TableHead extends TableSection {
+    constructor() {
+        super();
     }
 
     get light() {
@@ -371,37 +383,19 @@ class TableHead extends HTMLTableSectionElement {
             this.classList.remove('thead-dark');
         }
     }
+}
 
-    newRow() {
-        let row = new TableRow();
-        this.appendChild(row);
-        return row;
+
+class TableBody extends TableSection {
+    constructor() {
+        super();
     }
 }
 
 
-class TableBody extends HTMLTableSectionElement {
+class TableFoot extends TableSection {
     constructor() {
         super();
-    }
-
-    newRow() {
-        let row = new TableRow();
-        this.appendChild(row);
-        return row;
-    }
-}
-
-
-class TableFoot extends HTMLTableSectionElement {
-    constructor() {
-        super();
-    }
-
-    newRow() {
-        let row = new TableRow();
-        this.appendChild(row);
-        return row;
     }
 }
 
@@ -423,6 +417,18 @@ class TableRow extends HTMLTableRowElement {
         this.appendChild(cell)
         return cell;
     }
+
+    newRowBefore() {
+        let row = new TableRow();
+        this.before(row);
+        return row;
+    }
+
+    newRowAfter() {
+        let row = new TableRow();
+        this.after(row);
+        return row;
+    }
 }
 
 class TableCell extends HTMLTableCellElement {
@@ -432,6 +438,42 @@ class TableCell extends HTMLTableCellElement {
         if (text) {
             this.textContent = text;
         }
+    }
+
+    newCellBefore(text) {
+        if (this instanceof TableDataCell) {
+            let cell = new TableDataCell(text);
+            this.before(cell);
+            return cell;
+        } 
+
+        if (this instanceof TableHeaderCell) {
+            let cell = new TableHeaderCell(text);
+            this.before(cell);
+            return cell;
+        }
+
+        let cell = new TableCell();
+        this.before(cell);
+        return cell;
+    }
+
+    newCellAfter(text) {
+        if (this instanceof TableDataCell) {
+            let cell = new TableDataCell(text);
+            this.after(cell);
+            return cell;
+        } 
+
+        if (this instanceof TableHeaderCell) {
+            let cell = new TableHeaderCell(text);
+            this.after(cell);
+            return cell;
+        }
+
+        let cell = new TableCell();
+        this.after(cell);
+        return cell;
     }
 }
 
