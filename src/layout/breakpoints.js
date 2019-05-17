@@ -76,7 +76,3 @@ let breakpointMixin = {
 }
 
 Object.assign(HTMLElement.prototype, breakpointMixin);
-
-String.prototype.toKebabCase = function() {
-    return this.replace(/[A-Z]/g, x => '-' + x.toLowerCase());
-}

@@ -88,7 +88,7 @@ borderMixin = {
 
 Object.assign(HTMLElement.prototype, borderMixin);colorMixin = {
     get _colors() {
-        return ['primary', 'secondary', 'success', 'danger','warning', 'info', 'light', 'dark']
+        return ['primary', 'secondary', 'success', 'info','warning', 'danger', 'light', 'dark']
     },
 
     get _colorClasses() {
@@ -96,7 +96,7 @@ Object.assign(HTMLElement.prototype, borderMixin);colorMixin = {
     },
 
     _addPropertyColor(prop, color) {
-        let _class = prop +'-' + color;
+        let _class = prop + '-' + color;
 
         this._removePropertyColor(prop);
         this._colorClasses[prop] = _class;
@@ -118,124 +118,40 @@ Object.assign(HTMLElement.prototype, borderMixin);colorMixin = {
         return this;
     },
 
-    _getPropertyColor(prop) {
-        if (this._colorClasses[prop]) {
-            return this._colorClasses[prop].split('-').slice(-1)[0];
-        }
+    _primary(prop)      {return this._updatePropertyColor(prop, 'primary')},
+    _secondary(prop)    {return this._updatePropertyColor(prop, 'secondary')},
+    _success(prop)      {return this._updatePropertyColor(prop, 'success')},
+    _info(prop)         {return this._updatePropertyColor(prop, 'info')},
+    _warning(prop)      {return this._updatePropertyColor(prop, 'warning')},
+    _danger(prop)       {return this._updatePropertyColor(prop, 'danger')},
+    _light(prop)        {return this._updatePropertyColor(prop, 'light')},
+    _dark(prop)         {return this._updatePropertyColor(prop, 'dark')},
 
-        return null;
-    },
+    //Text Color
+    textPrimary()   {return this._primary('text')},
+    textSecondary() {return this._secondary('text')},
+    textSuccess()   {return this._success('text')},
+    textInfo()      {return this._info('text')},
+    textWarning()   {return this._warning('text')},
+    textDanger()    {return this._danger('text')},
+    textLight()     {return this._light('text')},
+    textDark()      {return this._dark('text')},
 
-    _getPropAndColorByFunctionName(functionName) {
-        let prop = functionName.toKebabCase().split('-').slice(0, -1).join('-');
-        let color = functionName.toKebabCase().split('-').slice(-1)[0];
-        
-        return {
-            prop: prop,
-            color: color
-        }
-    },
-
-    textPrimary() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    textSecondary() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    textSuccess() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    textDanger() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    textWarning() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    textInfo() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    textLight() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    textDark() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    textBody() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    textMuted() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
+    textBody()      {return this._updatePropertyColor('text', 'body')},
+    textMuted()     {return this._updatePropertyColor('text', 'muted')},
 
     //Background Color
-    bgPrimary() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
+    bgPrimary()     {return this._primary('bg')},
+    bgSecondary()   {return this._secondary('bg')},
+    bgSuccess()     {return this._success('bg')},
+    bgInfo()        {return this._info('bg')},
+    bgWarning()     {return this._warning('bg')},
+    bgDanger()      {return this._danger('bg')},
+    bgLight()       {return this._light('bg')},
+    bgDark()        {return this._dark('bg')},
 
-    bgSecondary() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    bgSuccess() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    bgDanger() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    bgWarning() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    bgInfo() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    bgLight() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    bgDark() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    bgWhite() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
-
-    bgTransparent() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
-    },
+    bgWhite()       {return this._updatePropertyColor('bg', 'white')},
+    bgTransparent() {return this._updatePropertyColor('bg', 'transparent')},
 }
 
 Object.assign(HTMLElement.prototype, colorMixin);

@@ -2,6 +2,7 @@ class Btn extends HTMLButtonElement {
     constructor() {
         super();
         this.className = 'btn'; 
+        this.primary();
     }
 
     get large() {
@@ -41,6 +42,15 @@ class Btn extends HTMLButtonElement {
             this.classList.remove('btn-block');
         }
     }
+
+    primary()   {return this._primary('btn')}
+    secondary() {return this._secondary('btn')}
+    success()   {return this._success('btn')}
+    info()      {return this._info('btn')}
+    warning()   {return this._warning('btn')}
+    danger()    {return this._danger('btn')}
+    light()     {return this._light('btn')}
+    dark()      {return this._dark('btn')}
 }
 
 window.customElements.define('bs-button', Btn, {extends: 'button'});class Card extends HTMLDivElement {
