@@ -31,6 +31,8 @@ Element.prototype._updateClass = function(value, _class) {
     } else {
         this.removeClass(_class);
     }
+
+    return this;
 }
 
 String.prototype.toKebabCase = function() {

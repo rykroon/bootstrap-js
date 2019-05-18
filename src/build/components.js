@@ -13,19 +13,16 @@ class Btn extends HTMLButtonElement {
 
     lg(value) {
         this.classList.remove('btn-sm');
-        this._updateClass(value, 'btn-lg')
-        return this;
+        return this._updateClass(value, 'btn-lg')
     }
 
     sm(value) {
         this.classList.remove('btn-lg');
-        this._updateClass(value, 'btn-sm')
-        return this;
+        return this._updateClass(value, 'btn-sm')
     }
 
     block(value) {
-        this._updateClass(value, 'btn-block')
-        return this;
+        return this._updateClass(value, 'btn-block')
     }
 
     primary()   {

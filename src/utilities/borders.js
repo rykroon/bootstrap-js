@@ -1,88 +1,59 @@
 borderMixin = {
     border(value) {
-        if (value || value === undefined) {
-            this.classList.add(arguments.callee.name.toKebabCase());
-        } else {
-            this.classList.remove(arguments.callee.name.toKebabCase());
-        }
+        return this._updateClass(value, 'border');
     },
 
     borderTop(value) {
-        if (value || value === undefined) {
-            this.classList.add(arguments.callee.name.toKebabCase());
-        } else {
-            this.classList.remove(arguments.callee.name.toKebabCase());
-        }
+        return this._updateClass(value, 'border-top');
     },
 
     borderRight(value) {
-        if (value || value === undefined) {
-            this.classList.add(arguments.callee.name.toKebabCase());
-        } else {
-            this.classList.remove(arguments.callee.name.toKebabCase());
-        }
+        return this._updateClass(value, 'border-right');
     },
 
     borderBottom(value) {
-        if (value || value === undefined) {
-            this.classList.add(arguments.callee.name.toKebabCase());
-        } else {
-            this.classList.remove(arguments.callee.name.toKebabCase());
-        }
+        return this._updateClass(value, 'border-bottom');
     },
 
     borderLeft(value) {
-        if (value || value === undefined) {
-            this.classList.add(arguments.callee.name.toKebabCase());
-        } else {
-            this.classList.remove(arguments.callee.name.toKebabCase());
-        }
+        return this._updateClass(value, 'border-left');
     },
 
     //Border Color
     borderPrimary() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
+        return this._primary('border');
     },
 
     borderSecondary() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
+        return this._secondary('border');
     },
 
     borderSuccess() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
+        return this._success('border');
     },
 
     borderDanger() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
+        return this._danger('border');
     },
 
     borderWarning() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
+        return this._warning('border');
     },
 
     borderInfo() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
+        return this._info('border');
     },
 
     borderLight() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
+        return this._light('border');
     },
 
     borderDark() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
+        return this._dark('border');
     },
 
     borderWhite() {
-        let x = this._getPropAndColorByFunctionName(arguments.callee.name);
-        return this._updatePropertyColor(x['prop'], x['color']);
+        return this._updatePropertyColor('border', 'white');
     },
 }
 
