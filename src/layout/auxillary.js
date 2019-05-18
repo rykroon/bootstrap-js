@@ -9,7 +9,28 @@ Element.prototype.removeClass = function(value) {
 }
 
 Element.prototype.containsClass = function(value) {
-    this.classList.contains(value);
+    return this.classList.contains(value);
+}
+
+Element.prototype.toggleClass = function(value) {
+    if (this.containsClass(value)) {
+        this.removeClass(value);
+
+    } else {
+        this.addClass(value);
+    }
+}
+
+Element.prototype._updateClass = function(value, _class) {
+    if (value === undefined) {
+        this.toggleClass(_class);
+
+    } else if (value) {
+        this.addClass(_class);
+
+    } else {
+        this.removeClass(_class);
+    }
 }
 
 String.prototype.toKebabCase = function() {

@@ -11,62 +11,36 @@ class Table extends HTMLTableElement {
         this.tbody = true;
     }
 
-    _toggleProperty(prop, value) {
-        if (value) {
-            this.classList.add(prop);
-        } else {
-            this.classList.remove(prop);
-        }
+    striped(value) {
+        this._updateClass(value, 'thead-striped');
+        return this;
     }
 
-    //Striped
-    get striped() {
-        return this.classList.contains('table-striped');
+    bordered(value) {
+        this.classList.remove('thead-borderless')
+        this._updateClass(value, 'thead-bordered');
+        return this;
     }
 
-    set striped(value) {
-        this._toggleProperty('table-striped', value);
+    borderless(value) {
+        this.classList.remove('thead-bordered');
+        this._updateClass(value, 'thead-borderless');
+        return this;
     }
 
-    //Bordered
-    get bordered() {
-        return this.classList.contains('table-bordered');
+    hover(value) {
+        this._updateClass(value, 'thead-hover');
+        return this;
     }
 
-    set bordered(value) {
-        if (value) this.borderless = false;
-       this._toggleProperty('table-bordered', value);
-    }
-
-    //Borderless
-    get borderless() {
-        return this.classList.contains('table-borderless');
-    }
-
-    set borderless(value) {
-        if (value)  this.bordered = false;
-        this._toggleProperty('table-borderless', value);
-    }
-
-    //Hover
-    get hover() {
-        return this.classList.contains('table-hover');
-    }
-
-    set hover(value) {
-        this._toggleProperty('table-hover', value);
-    }
-
-    //Small
-    get small() {
-        return this.classList.contains('table-sm');
-    }
-
-    set small(value) {
-        this._toggleProperty('table-sm', value);
+    sm(value) {
+        this._updateClass(value, 'thead-sm');
+        return this;
     }
 
     //responsive
+    //
+    //
 
     get thead() {
         return this._thead;
@@ -75,6 +49,7 @@ class Table extends HTMLTableElement {
     set thead(value) {
         if (value === true && this._thead === null) {
             this._thead = new TableHead();
+
             if (this.firstElementChild) {
                 this.firstElementChild.before(this._thead);
             } else {
@@ -154,30 +129,12 @@ class TableHead extends TableSection {
         super();
     }
 
-    get light() {
-        return this.classList.contains('thead-light');
+    light() {
+        return this._light('thead');
     }
 
-    set light(value) {
-        if (value) {
-            this.classList.remove('thead-dark');
-            this.classList.add('thead-light');
-        } else {
-            this.classList.remove('thead-light');
-        }
-    }
-
-    get dark() {
-        return this.classList.contains('thead-dark');
-    }
-
-    set dark(value) {
-        if (value) {
-            this.classList.remove('thead-light');
-            this.classList.add('thead-dark');
-        } else {
-            this.classList.remove('thead-dark');
-        }
+    dark() {
+        return this._dark('thead');
     }
 }
 
@@ -206,6 +163,7 @@ class TableRow extends HTMLTableRowElement {
 
         if (this.parentElement instanceof TableHead) {
             cell = new TableHeaderCell(text);
+
         } else {
             cell = new TableDataCell(text);
         }

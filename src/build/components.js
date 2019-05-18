@@ -12,34 +12,19 @@ class Btn extends HTMLButtonElement {
     }
 
     lg(value) {
-        if (value || value === undefined) {
-            this.classList.remove('btn-sm');
-            this.classList.add('btn-lg');
-        } else {
-            this.classList.remove('btn-lg');
-        }
-
+        this.classList.remove('btn-sm');
+        this._updateClass(value, 'btn-lg')
         return this;
     }
 
     sm(value) {
-        if (value || value === undefined) {
-            this.classList.remove('btn-lg');
-            this.classList.add('btn-sm');
-        } else {
-            this.classList.remove('btn-sm');
-        }
-
+        this.classList.remove('btn-lg');
+        this._updateClass(value, 'btn-sm')
         return this;
     }
 
     block(value) {
-        if (value || value === undefined) {
-            this.classList.add('btn-block');
-        } else {
-            this.classList.remove('btn-block');
-        }
-
+        this._updateClass(value, 'btn-block')
         return this;
     }
 
