@@ -36,9 +36,7 @@
 
 		col3 = col2.newColAfter().p(5).bgSuccess();
 
-		btn = new Btn().primary();
-		btn.large = true;
-		btn.textContent = "SUBMIT"
+		btn = new Btn("SUBMIT").lg().block();
 		col3.appendChild(btn);
 
 		container.appendToBody();
