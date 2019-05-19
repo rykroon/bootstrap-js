@@ -39,6 +39,17 @@
 		btn = new Btn("SUBMIT").lg().block();
 		col3.appendChild(btn);
 
+		col1Row2 = container.newRow().newCol();
+
+		table = new Table().warning();
+		table.thead.dark();
+		table.thead.newRow().newCell("One").newCellAfter("Two").newCellAfter("Three").newCellAfter("Four");
+		table.tbody.newRow().newCell(1).newCellAfter(2).newCellAfter(3).newCellAfter(4);
+		table.tbody.newRow().newCell(5).newCellAfter(6).newCellAfter(7).newCellAfter(8);
+		table.tbody.newRow().newCell(9).newCellAfter(10).newCellAfter(11).newCellAfter(12);
+		
+		col1Row2.appendChild(table);
+
 		container.appendToBody();
 	</script>
 </html>
