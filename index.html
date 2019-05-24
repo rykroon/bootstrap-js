@@ -23,13 +23,27 @@
 	<script>
 		//container = new Container();
 		container = Container.fromDOM();
+
+		navCol = container.newRow().newCol();
+
+		nav = new Nav().fill().pills().m(3);
+		nav.newItem("Home").active();
+		nav.newItem("About");
+		nav.newItem("Contact")
+
+		navCol.appendChild(nav);
+
+
+
 		row = container.newRow();
 		row.justifyContent('between');
 
 		col1 = row.newCol().p(5).bgPrimary();
 
 		card = new Card();
-		card.header = "hello";
+		card.header = "Header";
+		card.title = "Title";
+		card.text = "Text";
 		col1.appendChild(card);
 
 		col2 = col1.newColAfter().p(5).bgSecondary(); //row.newCol().p(5);
