@@ -315,8 +315,17 @@ class Nav extends HTMLUListElement {
 class NavItem extends HTMLLIElement {
     constructor(text, href) {
         super();
-        this.classList.add('nav-item');
-        this.link = new NavLink(text, href);
+        this.className = 'nav-item';
+        this.link = document.createElement('a');
+        this.link.className = 'nav-link';
+        this.link.textContent = text;
+        
+        if (href) {
+            this.link.href = href;
+        } else {
+            this.link.href = '#';
+        }
+        
         this.appendChild(this.link);
     }
 
@@ -344,21 +353,5 @@ class NavItem extends HTMLLIElement {
 }
 
 
-class NavLink extends HTMLAnchorElement {
-    constructor(text, href) {
-        super();
-        this.classList.add('nav-link');
-
-        if (text) this.textContent = text;
-        if (href) {
-            this.href = href;
-        } else {
-            this.href = '#';
-        }
-    }
-}
-
-
 window.customElements.define('bs-nav', Nav, {extends: 'ul'});
 window.customElements.define('bs-nav-item', NavItem, {extends: 'li'});
-window.customElements.define('bs-nav-link', NavLink, {extends: 'a'});
