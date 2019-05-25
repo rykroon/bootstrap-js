@@ -54,6 +54,10 @@ class NavItem extends HTMLLIElement {
         this.link._updateClass(value, 'active');
         return this;
     }
+
+    disabled(value) {
+        this.link._updateClass(value, 'disabled');
+    }
 }
 
 
