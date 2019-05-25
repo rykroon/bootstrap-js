@@ -12,19 +12,23 @@ class Nav extends HTMLUListElement {
     }
 
     tabs(value) {
-        return this._toggleClass(value, 'nav-tabs');
+        this._toggleClass('nav-tabs', value);
+        return this;
     }
 
     pills(value) {
-        return this._toggleClass(value, 'nav-pills');
+        this._toggleClass('nav-pills', value);
+        return this;
     }
 
     fill(value) {
-        return this._toggleClass(value, 'nav-fill');
+        this._toggleClass('nav-fill', value);
+        return this;
     }
 
     justified(value) {
-        return this._toggleClass(value, 'nav-justified');
+        this._toggleClass('nav-justified', value);
+        return this;
     }
 
 }

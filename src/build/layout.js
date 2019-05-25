@@ -43,15 +43,6 @@ Element.prototype._toggleClass = function(className, state) {
     return this;
 }
 
-String.prototype.toKebabCase = function() {
-    return this.replace(/[A-Z]/g, x => '-' + x.toLowerCase());
-}
-
-//The calling method should pass in it's 'arguments' variable.
-function _methodAsClass(args) {
-    console.log(args.callee.name.toKebabCase());
-}
-
 //Breakpoint Mixin for Responsive Properties
 let breakpointMixin = {
     get _breakpoints() {

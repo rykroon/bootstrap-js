@@ -15,11 +15,13 @@ borderMixin = {
     },
 
     borderBottom(value) {
-        return this._toggleClass(value, 'border-bottom');
+        this._toggleClass('border-bottom', value);
+        return this;
     },
 
     borderLeft(value) {
-        return this._toggleClass(value, 'border-left');
+        this._toggleClass('border-left', value);
+        return this;
     },
 
     //Border Color
