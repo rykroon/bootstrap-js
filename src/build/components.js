@@ -13,16 +13,19 @@ class Btn extends HTMLButtonElement {
 
     lg(value) {
         this.classList.remove('btn-sm');
-        return this._updateClass(value, 'btn-lg')
+        this._toggleClass('btn-lg', value)
+        return this;
     }
 
     sm(value) {
         this.classList.remove('btn-lg');
-        return this._updateClass(value, 'btn-sm')
+        this._toggleClass('btn-sm', value);
+        return this;
     }
 
     block(value) {
-        return this._updateClass(value, 'btn-block')
+        this._toggleClass('btn-block', value);
+        return this;
     }
 
     primary()   {
@@ -287,19 +290,19 @@ class Nav extends HTMLUListElement {
     }
 
     tabs(value) {
-        return this._updateClass(value, 'nav-tabs');
+        return this._toggleClass(value, 'nav-tabs');
     }
 
     pills(value) {
-        return this._updateClass(value, 'nav-pills');
+        return this._toggleClass(value, 'nav-pills');
     }
 
     fill(value) {
-        return this._updateClass(value, 'nav-fill');
+        return this._toggleClass(value, 'nav-fill');
     }
 
     justified(value) {
-        return this._updateClass(value, 'nav-justified');
+        return this._toggleClass(value, 'nav-justified');
     }
 
 }
@@ -326,12 +329,13 @@ class NavItem extends HTMLLIElement {
     }
 
     active(value) {
-        this.link._updateClass(value, 'active');
+        this.link._toggleClass('active', value);
         return this;
     }
 
     disabled(value) {
-        this.link._updateClass(value, 'disabled');
+        this.link._toggleClass('disabled', value);
+        return this;
     }
 }
 

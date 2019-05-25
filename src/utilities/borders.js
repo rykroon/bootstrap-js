@@ -1,22 +1,25 @@
 borderMixin = {
     border(value) {
-        return this._updateClass(value, 'border');
+        this._toggleClass('border', value);
+        return this;
     },
 
     borderTop(value) {
-        return this._updateClass(value, 'border-top');
+        this._toggleClass('border-top', value);
+        return this;
     },
 
     borderRight(value) {
-        return this._updateClass(value, 'border-right');
+        this._toggleClass('border-right', value);
+        return this;
     },
 
     borderBottom(value) {
-        return this._updateClass(value, 'border-bottom');
+        return this._toggleClass(value, 'border-bottom');
     },
 
     borderLeft(value) {
-        return this._updateClass(value, 'border-left');
+        return this._toggleClass(value, 'border-left');
     },
 
     //Border Color

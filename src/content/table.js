@@ -12,25 +12,30 @@ class Table extends HTMLTableElement {
     }
 
     striped(value) {
-        return this._updateClass(value, 'table-striped');
+        this._toggleClass('table-striped', value);
+        return this;
     }
 
     bordered(value) {
         this.classList.remove('table-borderless')
-        return this._updateClass(value, 'table-bordered');
+        this._toggleClass('table-bordered', value);
+        return this;
     }
 
     borderless(value) {
         this.classList.remove('table-bordered');
-        return this._updateClass(value, 'table-borderless');
+        this._toggleClass('table-borderless', value);
+        return this;
     }
 
     hover(value) {
-        return this._updateClass(value, 'table-hover');
+        this._toggleClass('table-hover', value);
+        return this;
     }
 
     sm(value) {
-        return this._updateClass(value, 'table-sm');
+        this._toggleClass('table-sm', value);
+        return this;
     }
 
     active() {
