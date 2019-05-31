@@ -85,10 +85,10 @@ Object.assign(HTMLElement.prototype, borderMixin);colorMixin = {
     },
 
     _updatePropertyColor(prop, color) {
-        if (color) {
-            this._addPropertyColor(prop, color);
-        } else {
+        if (color == null) {
             this._removePropertyColor(prop);
+        } else {
+            this._addPropertyColor(prop, color);
         }
 
         return this;

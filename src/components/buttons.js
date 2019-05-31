@@ -3,12 +3,7 @@ class Btn extends HTMLButtonElement {
         super();
         this.className = 'btn'; 
         this.primary();
-        this.text(text)
-    }
-
-    text(value) {
-        this.textContent = value;
-        return this;
+        this.textContent = text;
     }
 
     lg(value) {
