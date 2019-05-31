@@ -4,10 +4,6 @@ let breakpointMixin = {
         return [undefined, ,'sm', 'md', 'lg', 'xl'];
     },
 
-    get _responsiveProperties() {
-        return {}
-    },
-
     get _responsiveClasses() {
         return {
             undefined: {},
@@ -18,28 +14,7 @@ let breakpointMixin = {
         }
     },
 
-    _isValidResponsiveProperty(prop) {
-        return prop in this._responsiveProperties;
-    },
-
-    _isValidBreakpoint(bp) {
-        return this._breakpoints.includes(bp);
-    },
-
-    _isValidValueForResponsiveProperty(prop, value) {
-        return this._responsiveProperties[prop].includes(value);
-    },
-
     _addResponsiveProperty(prop, bp, value) {
-		//check for valid property
-		if (! this._isValidResponsiveProperty(prop)) throw "Invalid property";
-
-		//Check for valid breakpoint
-		if (! this._isValidBreakpoint(bp)) throw "Invalid breakpoint";
-
-		//check for valid value
-        if (! this._isValidValueForResponsiveProperty(prop, value)) throw "Invalid Value";
-
         //remove already existing property
         this._removeResponsiveProperty(prop, bp);
 

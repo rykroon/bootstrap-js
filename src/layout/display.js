@@ -1,30 +1,7 @@
 let displayMixin = {
-    get _displayProperties() {
-        return {
-            'd': [
-                'none',
-                'inline',
-                'inline-block',
-                'block',
-                'table',
-                'table-row',
-                'table-cell',
-                'flex',
-                'inline-flex'
-            ]
-        }
-    },
-    _updateDisplayProperty(prop, bp, value) {
-        if (! (prop in this._responsiveProperties)) {
-            this._responsiveProperties[prop] = this._displayProperties[prop];
-        }
 
-        return this._updateResponsiveProperty(prop, bp, value);
-    },
-
-
-    //Display Porperty
-    d(value, bp)    {return this._updateDisplayProperty('d', bp, value)},
+    //Display Property
+    d(value, bp)    {return this._updateResponsiveProperty('d', bp, value)},
 
     //Display Breakpoints
     dSm(value)  {return this.d(value, 'sm')},

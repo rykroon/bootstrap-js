@@ -1,39 +1,7 @@
 let flexMixin = {
-    get _flexProperties() {
-        return {
-            'flex': [
-                'row', 
-                'column',
-                'row-reverse',
-                'column-reverse', 
-                'wrap',
-                'nowrap',
-                'wrap-reverse',
-                'fill',
-                'grow-0',
-                'grow-1',
-                'shrink-0',
-                'shrink-1',
-
-            ],
-            'justify-content': ['start', 'end', 'center', 'between', 'around'],
-            'align-items': ['start', 'end', 'center', 'baseline', 'stretch'],
-            'align-content': ['start', 'end', 'center', 'between', 'around', 'stretch'],
-            'align-self': ['auto', 'start', 'end', 'center', 'baseline', 'stretch'],
-            'order': ['first', 'last', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        }
-    },
-
-    _updateFlexProperty(prop, bp, value) {
-        if (! (prop in this._responsiveProperties)) {
-            this._responsiveProperties[prop] = this._flexProperties[prop];
-        }
-
-        return this._updateResponsiveProperty(prop, bp, value);
-    },
 
     //Flex Property
-    flex(value, bp) {return this._updateFlexProperty('flex', bp, value)},
+    flex(value, bp) {return this._updateResponsiveProperty('flex', bp, value)},
 
     //Flex Breakpoints
     flexSm(value)   {return this.flex(value, 'sm')},
@@ -126,7 +94,7 @@ let flexMixin = {
     flexXlShrinkOne()   {return this.flexXl('shrink-1')},
     
     //Justify Content Property
-    justifyContent(value, bp)   {return this._updateFlexProperty('justify-content', bp, value)},
+    justifyContent(value, bp)   {return this._updateResponsiveProperty('justify-content', bp, value)},
 
     //Justify Content Breakpoints
     justifyContentSm(value) {return justifyContent(value, 'sm')},
@@ -170,7 +138,7 @@ let flexMixin = {
     justifyContentXlAround()    {return this.justifyContentXl('around')},
 
     //Align Items Property
-    alignItems(value, bp)   {return this._updateFlexProperty('align-items', bp, value)},
+    alignItems(value, bp)   {return this._updateResponsiveProperty('align-items', bp, value)},
 
     //Align Items Breakpoints
     alignItemsSm(value) {return this.alignItems(value, 'sm')},
@@ -212,7 +180,7 @@ let flexMixin = {
     alignItemsXlStretch()   {return this.alignItemsXl('stretch')},
 
     //Align Content Property
-    alignContent(value, bp) {return this._updateFlexProperty('align-content', bp, value)},
+    alignContent(value, bp) {return this._updateResponsiveProperty('align-content', bp, value)},
 
     //Align Content Breakpoints
     alignContentSm(value)   {return this.alignContent(value, 'sm')},
@@ -263,7 +231,7 @@ let flexMixin = {
     alignContentXlStretch() {return this.alignContentXl('stretch')},
 
     //Align Self
-    alignSelf(value, bp)    {return this._updateFlexProperty('align-self', bp, value)},
+    alignSelf(value, bp)    {return this._updateResponsiveProperty('align-self', bp, value)},
 
     //Align Self Breakpoints
     alignSelfSm(value)  {return this.alignSelf(value, 'sm')},
@@ -314,7 +282,7 @@ let flexMixin = {
     alignSelfXlStretch()    {return this.alignSelfXl('stretch')},
 
     //Order Property
-    order(value, bp)    {return this._updateFlexProperty('order', bp, value)},
+    order(value, bp)    {return this._updateResponsiveProperty('order', bp, value)},
     
     //Order breakpoints
     orderSm(value)  {return this.order(value, 'sm')},

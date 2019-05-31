@@ -49,10 +49,6 @@ let breakpointMixin = {
         return [undefined, ,'sm', 'md', 'lg', 'xl'];
     },
 
-    get _responsiveProperties() {
-        return {}
-    },
-
     get _responsiveClasses() {
         return {
             undefined: {},
@@ -63,28 +59,7 @@ let breakpointMixin = {
         }
     },
 
-    _isValidResponsiveProperty(prop) {
-        return prop in this._responsiveProperties;
-    },
-
-    _isValidBreakpoint(bp) {
-        return this._breakpoints.includes(bp);
-    },
-
-    _isValidValueForResponsiveProperty(prop, value) {
-        return this._responsiveProperties[prop].includes(value);
-    },
-
     _addResponsiveProperty(prop, bp, value) {
-		//check for valid property
-		if (! this._isValidResponsiveProperty(prop)) throw "Invalid property";
-
-		//Check for valid breakpoint
-		if (! this._isValidBreakpoint(bp)) throw "Invalid breakpoint";
-
-		//check for valid value
-        if (! this._isValidValueForResponsiveProperty(prop, value)) throw "Invalid Value";
-
         //remove already existing property
         this._removeResponsiveProperty(prop, bp);
 
@@ -122,32 +97,9 @@ let breakpointMixin = {
 
 Object.assign(HTMLElement.prototype, breakpointMixin);
 let displayMixin = {
-    get _displayProperties() {
-        return {
-            'd': [
-                'none',
-                'inline',
-                'inline-block',
-                'block',
-                'table',
-                'table-row',
-                'table-cell',
-                'flex',
-                'inline-flex'
-            ]
-        }
-    },
-    _updateDisplayProperty(prop, bp, value) {
-        if (! (prop in this._responsiveProperties)) {
-            this._responsiveProperties[prop] = this._displayProperties[prop];
-        }
 
-        return this._updateResponsiveProperty(prop, bp, value);
-    },
-
-
-    //Display Porperty
-    d(value, bp)    {return this._updateDisplayProperty('d', bp, value)},
+    //Display Property
+    d(value, bp)    {return this._updateResponsiveProperty('d', bp, value)},
 
     //Display Breakpoints
     dSm(value)  {return this.d(value, 'sm')},
@@ -220,41 +172,9 @@ let displayMixin = {
 }
 
 Object.assign(HTMLElement.prototype, displayMixin);let flexMixin = {
-    get _flexProperties() {
-        return {
-            'flex': [
-                'row', 
-                'column',
-                'row-reverse',
-                'column-reverse', 
-                'wrap',
-                'nowrap',
-                'wrap-reverse',
-                'fill',
-                'grow-0',
-                'grow-1',
-                'shrink-0',
-                'shrink-1',
-
-            ],
-            'justify-content': ['start', 'end', 'center', 'between', 'around'],
-            'align-items': ['start', 'end', 'center', 'baseline', 'stretch'],
-            'align-content': ['start', 'end', 'center', 'between', 'around', 'stretch'],
-            'align-self': ['auto', 'start', 'end', 'center', 'baseline', 'stretch'],
-            'order': ['first', 'last', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        }
-    },
-
-    _updateFlexProperty(prop, bp, value) {
-        if (! (prop in this._responsiveProperties)) {
-            this._responsiveProperties[prop] = this._flexProperties[prop];
-        }
-
-        return this._updateResponsiveProperty(prop, bp, value);
-    },
 
     //Flex Property
-    flex(value, bp) {return this._updateFlexProperty('flex', bp, value)},
+    flex(value, bp) {return this._updateResponsiveProperty('flex', bp, value)},
 
     //Flex Breakpoints
     flexSm(value)   {return this.flex(value, 'sm')},
@@ -347,7 +267,7 @@ Object.assign(HTMLElement.prototype, displayMixin);let flexMixin = {
     flexXlShrinkOne()   {return this.flexXl('shrink-1')},
     
     //Justify Content Property
-    justifyContent(value, bp)   {return this._updateFlexProperty('justify-content', bp, value)},
+    justifyContent(value, bp)   {return this._updateResponsiveProperty('justify-content', bp, value)},
 
     //Justify Content Breakpoints
     justifyContentSm(value) {return justifyContent(value, 'sm')},
@@ -391,7 +311,7 @@ Object.assign(HTMLElement.prototype, displayMixin);let flexMixin = {
     justifyContentXlAround()    {return this.justifyContentXl('around')},
 
     //Align Items Property
-    alignItems(value, bp)   {return this._updateFlexProperty('align-items', bp, value)},
+    alignItems(value, bp)   {return this._updateResponsiveProperty('align-items', bp, value)},
 
     //Align Items Breakpoints
     alignItemsSm(value) {return this.alignItems(value, 'sm')},
@@ -433,7 +353,7 @@ Object.assign(HTMLElement.prototype, displayMixin);let flexMixin = {
     alignItemsXlStretch()   {return this.alignItemsXl('stretch')},
 
     //Align Content Property
-    alignContent(value, bp) {return this._updateFlexProperty('align-content', bp, value)},
+    alignContent(value, bp) {return this._updateResponsiveProperty('align-content', bp, value)},
 
     //Align Content Breakpoints
     alignContentSm(value)   {return this.alignContent(value, 'sm')},
@@ -484,7 +404,7 @@ Object.assign(HTMLElement.prototype, displayMixin);let flexMixin = {
     alignContentXlStretch() {return this.alignContentXl('stretch')},
 
     //Align Self
-    alignSelf(value, bp)    {return this._updateFlexProperty('align-self', bp, value)},
+    alignSelf(value, bp)    {return this._updateResponsiveProperty('align-self', bp, value)},
 
     //Align Self Breakpoints
     alignSelfSm(value)  {return this.alignSelf(value, 'sm')},
@@ -535,7 +455,7 @@ Object.assign(HTMLElement.prototype, displayMixin);let flexMixin = {
     alignSelfXlStretch()    {return this.alignSelfXl('stretch')},
 
     //Order Property
-    order(value, bp)    {return this._updateFlexProperty('order', bp, value)},
+    order(value, bp)    {return this._updateResponsiveProperty('order', bp, value)},
     
     //Order breakpoints
     orderSm(value)  {return this.order(value, 'sm')},
@@ -701,37 +621,12 @@ class Col extends HTMLDivElement {
 window.customElements.define('bs-container', Container, {extends: 'div'});
 window.customElements.define('bs-row', Row, {extends: 'div'});
 window.customElements.define('bs-col', Col, {extends: 'div'});let spacingMixin = {
-    get _spacingProperties() {
-        return {
-            'm':    [0, 1, 2, 3, 4, 5, 'n1', 'n2', 'n3', 'n4', 'n5', 'auto'],
-            'mt':   [0, 1, 2, 3, 4, 5, 'n1', 'n2', 'n3', 'n4', 'n5', 'auto'],
-            'mb':   [0, 1, 2, 3, 4, 5, 'n1', 'n2', 'n3', 'n4', 'n5', 'auto'],
-            'ml':   [0, 1, 2, 3, 4, 5, 'n1', 'n2', 'n3', 'n4', 'n5', 'auto'],
-            'mr':   [0, 1, 2, 3, 4, 5, 'n1', 'n2', 'n3', 'n4', 'n5', 'auto'],
-            'mx':   [0, 1, 2, 3, 4, 5, 'n1', 'n2', 'n3', 'n4', 'n5', 'auto'],
-            'my':   [0, 1, 2, 3, 4, 5, 'n1', 'n2', 'n3', 'n4', 'n5', 'auto'],
-            'p':    [0, 1, 2, 3, 4, 5],
-            'pt':   [0, 1, 2, 3, 4, 5],
-            'pb':   [0, 1, 2, 3, 4, 5],
-            'pl':   [0, 1, 2, 3, 4, 5],
-            'pr':   [0, 1, 2, 3, 4, 5],
-            'px':   [0, 1, 2, 3, 4, 5],
-            'py':   [0, 1, 2, 3, 4, 5]
-        }
-    },
 
-    _updateSpacingProperty(prop, bp, value) {
-        if (! (prop in this._responsiveProperties)) {
-            this._responsiveProperties[prop] = this._spacingProperties[prop];
-        }
-
-        return this._updateResponsiveProperty(prop, bp, value);
-    },
 
     //Margin
 
     //Margin Property
-    m(value, bp)    {return this._updateSpacingProperty('m', bp, value)},
+    m(value, bp)    {return this._updateResponsiveProperty('m', bp, value)},
 
     //Margin Breakpoints
     mSm(value)  {return this.m(value, 'sm')},
@@ -747,7 +642,7 @@ window.customElements.define('bs-col', Col, {extends: 'div'});let spacingMixin =
     mXlAuto()   {return this.mXl('auto')},
 
     //Margin Top Property
-    mt(value, bp)   {return this._updateSpacingProperty('mt', bp, value)},
+    mt(value, bp)   {return this._updateResponsiveProperty('mt', bp, value)},
 
     //Margin Top Breakpoints
     mtSm(value)  {return this.mt(value, 'sm')},
@@ -763,7 +658,7 @@ window.customElements.define('bs-col', Col, {extends: 'div'});let spacingMixin =
     mtXlAuto()  {return this.mtXl('auto')},
 
     //Margin Bottom Property
-    mb(value, bp)   {return this._updateSpacingProperty('mb', bp, value)},
+    mb(value, bp)   {return this._updateResponsiveProperty('mb', bp, value)},
 
     //Margin Bottom Breakpoints
     mbSm(value)  {return this.mb(value, 'sm')},
@@ -779,7 +674,7 @@ window.customElements.define('bs-col', Col, {extends: 'div'});let spacingMixin =
     mbXlAuto()  {return this.mbXl('auto')},
 
     //Margin Left Property
-    ml(value, bp)   {return this._updateSpacingProperty('ml', bp, value)},
+    ml(value, bp)   {return this._updateResponsiveProperty('ml', bp, value)},
 
     //Margin Left Breakpoints
     mbSm(value)  {return this.mb(value, 'sm')},
@@ -795,7 +690,7 @@ window.customElements.define('bs-col', Col, {extends: 'div'});let spacingMixin =
     mlXlAuto()  {return this.mlXl('auto')},
 
     //Margin Right Property
-    mr(value, bp)   {return this._updateSpacingProperty('mr', bp, value)},
+    mr(value, bp)   {return this._updateResponsiveProperty('mr', bp, value)},
 
     //Margin Right Breakpoints
     mrSm(value)  {return this.mr(value, 'sm')},
@@ -811,7 +706,7 @@ window.customElements.define('bs-col', Col, {extends: 'div'});let spacingMixin =
     mrXlAuto()  {return this.mrXl('auto')},
 
     //Margin X Property
-    mx(value, bp)   {return this._updateSpacingProperty('mx', bp, value)},
+    mx(value, bp)   {return this._updateResponsiveProperty('mx', bp, value)},
 
     //Margin X Breakpoints
     mxSm(value)  {return this.mx(value, 'sm')},
@@ -827,7 +722,7 @@ window.customElements.define('bs-col', Col, {extends: 'div'});let spacingMixin =
     mxXlAuto()  {return this.mxXl('auto')},
 
     //Margin Y Property
-    my(value, bp)   {return this._updateSpacingProperty('my', bp, value)},
+    my(value, bp)   {return this._updateResponsiveProperty('my', bp, value)},
 
     //Margin Y Breakpoints
     mySm(value)  {return this.my(value, 'sm')},
@@ -843,7 +738,7 @@ window.customElements.define('bs-col', Col, {extends: 'div'});let spacingMixin =
     myXlAuto()  {return this.myXl('auto')},
 
     //Padding
-    p(value, bp)    {return this._updateSpacingProperty('p', bp, value)},
+    p(value, bp)    {return this._updateResponsiveProperty('p', bp, value)},
 
     //Pading Breakpoints
     pSm(value) {return this.p(value, 'sm')},
@@ -852,7 +747,7 @@ window.customElements.define('bs-col', Col, {extends: 'div'});let spacingMixin =
     pXl(value) {return this.p(value, 'xl')},
 
     //Padding Top Property
-    pt(value, bp)   {return this._updateSpacingProperty('pt', bp, value)},
+    pt(value, bp)   {return this._updateResponsiveProperty('pt', bp, value)},
 
     //Padding Top Breakpoints
     ptSm(value) {return this.pt(value, 'sm')},
@@ -861,7 +756,7 @@ window.customElements.define('bs-col', Col, {extends: 'div'});let spacingMixin =
     ptXl(value) {return this.pt(value, 'xl')},
 
     //Padding Bottom Property
-    pb(value, bp)   {return this._updateSpacingProperty('pb', bp, value)},
+    pb(value, bp)   {return this._updateResponsiveProperty('pb', bp, value)},
 
     //Padding Bottom Breakpoints
     pbSm(value) {return this.pb(value, 'sm')},
@@ -870,7 +765,7 @@ window.customElements.define('bs-col', Col, {extends: 'div'});let spacingMixin =
     pbXl(value) {return this.pb(value, 'xl')},
 
     //Padding Left Property
-    pl(value, bp)   {return this._updateSpacingProperty('pl', bp, value)},
+    pl(value, bp)   {return this._updateResponsiveProperty('pl', bp, value)},
 
     //Padding Left Breakpoints
     plSm(value) {return this.pl(value, 'sm')},
@@ -879,7 +774,7 @@ window.customElements.define('bs-col', Col, {extends: 'div'});let spacingMixin =
     plXl(value) {return this.pl(value, 'xl')},
 
     //Padding Right Property
-    pr(value, bp)   {return this._updateSpacingProperty('pr', bp, value)},
+    pr(value, bp)   {return this._updateResponsiveProperty('pr', bp, value)},
 
     //Padding Right Breakpoints
     prSm(value) {return this.pr(value, 'sm')},
@@ -888,7 +783,7 @@ window.customElements.define('bs-col', Col, {extends: 'div'});let spacingMixin =
     prXl(value) {return this.pr(value, 'xl')},
 
     //Padding X Property
-    px(value, bp)   {return this._updateSpacingProperty('px', bp, value)},
+    px(value, bp)   {return this._updateResponsiveProperty('px', bp, value)},
 
     //Padding X Breakpoints
     pxSm(value) {return this.px(value, 'sm')},
@@ -897,7 +792,7 @@ window.customElements.define('bs-col', Col, {extends: 'div'});let spacingMixin =
     pxXl(value) {return this.px(value, 'xl')},
 
     //Padding Y Property
-    py(value, bp)   {return this._updateSpacingProperty('py', bp, value)},
+    py(value, bp)   {return this._updateResponsiveProperty('py', bp, value)},
 
     //Padding Y Breakpoints
     pySm(value) {return this.py(value, 'sm')},
